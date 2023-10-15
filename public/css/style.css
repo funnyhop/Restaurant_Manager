@@ -76,14 +76,7 @@ aside {
 
 footer {
     grid-area: foot;
-    position: relative;
-    left: 1px;
-    /* top: 490px; */
-    will-change: top, left;
-    padding: 0px 8px;
-    font-family: Source Sans Pro;
-    margin: 0px 0px 0px 228px;
-    padding: 10px;
+
     /* background-color:#ffffff;
     color:#869099;
     font-family:Source Sans Pro;
@@ -108,7 +101,7 @@ body {
     line-height: 1.5;
     color: #212529;
     text-align: left;
-    background-color: #ffffff;
+    background-color: #FCFFE7;
 }
 
 h1,
@@ -201,7 +194,7 @@ a {
 }
 
 a:hover {
-    color: #0056b3;
+    color: #BAD7E9;
     text-decoration: none;
 }
 
@@ -456,13 +449,91 @@ button::-moz-focus-inner,
 
 .main-header {
     align-items: center;
-    background-color: #e0f8f1;
+    background-color: #12486B;
     color: #212529;
     display: flex;
     font-family: Source Sans Pro;
     justify-content: flex-start;
     line-height: 24px;
-    height: 55px;
+    height: 60px;
     padding: 8px;
+    text-align: left;
+}
+
+.main-footer {
+    position: relative;
+    left: 1px;
+    top: 157px;
+    will-change: top, left;
+    padding: 0px 8px;
+    font-family: Source Sans Pro;
+    margin: 0px 0px 0px 228px;
+    padding: 10px;
+}
+
+.brand-link {
+    color: #FCFFE7;
+    font-family: Source Sans Pro;
+    font-size: 20px;
+    line-height: 30px;
+    padding: 13px 8px;
+    text-align: left;
+}
+
+.brand-link img {
+    border-color: #f5f5f5;
+    border-radius: 50%;
+    border-style: groove;
+    border-width: 2px;
+    color: #adcee5;
+    font-size: 20px;
+    line-height: 16px;
+    margin: -3px 8px 0px 12.8px;
+    text-align: left;
+    width: 43px;
+    height: 43px;
+}
+
+.sidebar {
+    color: #212529;
+    line-height: 24px;
+    padding: 0px 8px;
+    text-align: left;
+}
+
+.nav-link {
+    background-position: 0px 0px;
+    border-radius: 4px;
+    color: #5dc3d3;
+    font-family: Source Sans Pro;
+    line-height: 24px;
+    padding: 8px 16px;
+    text-align: left;
+}
+
+.i-sidebar {
+    color: #08616f;
+    display: inline-block;
+    font-weight: 900;
+    line-height: 16px;
+    padding: 0px 4.8px 0px 0px;
+    text-align: left;
+}
+
+p {
+    color: #5dc3d3;
+    display: inline-block;
+    font-family: Source Sans Pro;
+    line-height: 24px;
+    text-align: left;
+}
+
+.nav-dopdown {
+    background-position: 0px 0px;
+    border-radius: 0%;
+    color: #5dc3d3;
+    font-family: Source Sans Pro;
+    line-height: 24px;
+    padding: 8px 16px;
     text-align: left;
 }

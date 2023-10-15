@@ -25,10 +25,11 @@
             <nav class="main-header navbar navbar-expand navbar-white navbar-light">
                 <!-- Left navbar links -->
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" data-widget="pushmenu" href="#"><i class=""></i></a>
-                        {{-- class="fas fa-bars" --}}
-                    </li>
+                    <a href="/sales" class="brand-link">
+                        <img src="{{ asset('images/logo-nha-hang.png') }}" alt="logo"
+                            class="brand-image img-circle elevation-3" style="opacity: .8">
+                        <span class="font-weight-light" style="font-family: scandia-web">Nhà hàng Oganic</span>
+                    </a>
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
@@ -48,8 +49,98 @@
         <article>
             Content
         </article>
-        <aside> Sidebar </aside>
-        <footer>
+        <aside>
+            <div class="sidebar">
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        <li class="nav-item">
+                            <a href="#salescollapse" class="nav-link" data-toggle="collapse">
+                                <i class="fa-solid fa-cart-shopping i-sidebar"></i>
+                                <p>Bán hàng<span class="right badge badge-danger">Sales</span></p>
+                            </a>
+                            <div class="pl-4">
+                                <a href="sales" class="nav-link nav-dopdown collapse" id="salescollapse">
+                                    <p>Bán thuốc</p>
+                                </a>
+                                <a href="#" class="nav-link nav-dopdown collapse"
+                                    id="salescollapse">
+                                    <p>Toa thuốc</p>
+                                </a>
+                                <a href="customers" class="nav-link nav-dopdown collapse" id="salescollapse">
+                                    <p>Khách hàng</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#collapse1" class="nav-link" data-toggle="collapse">
+                                <i class="fa-solid fa-pills i-sidebar"></i>
+                                <p>Thuốc<span class="right badge badge-tealgr">Medicine</span></p>
+                            </a>
+                            <div class="pl-4">
+                                <a href="producers" class="nav-link nav-dopdown collapse" id="collapse1">
+                                    <p>Nhà sản xuất</p>
+                                </a>
+                                <a href="suppliers" class="nav-link nav-dopdown collapse" id="collapse1">
+                                    <p>Nhà cung cấp</p>
+                                </a>
+                                <a href="druggr" class="nav-link nav-dopdown collapse" id="collapse1">
+                                    <p>Thêm nhóm thuốc</p>
+                                </a>
+                                <a href="medicines" class="nav-link nav-dopdown collapse" id="collapse1">
+                                    <p>Thêm thuốc</p>
+                                </a>
+                                <a href="prices" class="nav-link nav-dopdown collapse" id="collapse1">
+                                    <p>Giá thuốc</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#collapse2" class="nav-link" data-toggle="collapse">
+                                <i class="fa-solid fa-warehouse i-sidebar"></i>
+                                <p>Quản lý kho</p>
+                            </a>
+                            <div class="pl-4">
+                                <a href="#" class="nav-link nav-dopdown collapse"
+                                    id="collapse2">
+                                    <p>Nhập thuốc từ phiếu</p>
+                                </a>
+                                <a href="#" class="nav-link nav-dopdown collapse"
+                                    id="collapse2">
+                                    <p>Danh sách phiếu nhập</p>
+                                </a>
+                                <a href="checkinventory" class="nav-link nav-dopdown collapse" id="collapse2">
+                                    <p>Kiểm kho</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="staffs" class="nav-link">
+                                <i class="fa-solid fa-user-doctor i-sidebar"></i>
+                                <p>Nhân viên</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#collapse4" class="nav-link" data-toggle="collapse">
+                                <i class="fa-solid fa-file-invoice i-sidebar"></i>
+                                <p>Quản lý hóa đơn</p>
+                            </a>
+                            <div class="pl-4">
+                                <a href="bills" class="nav-link nav-dopdown collapse" id="collapse4">
+                                    <p>Hóa đơn bán</p>
+                                </a>
+                                <a href="revenue" class="nav-link nav-dopdown collapse" id="collapse4">
+                                    <p>Doanh thu</p>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+        </aside>
+        <footer class="main-footer">
             <div class="float-right pr-3">
                 All rights reserved.
             </div>
