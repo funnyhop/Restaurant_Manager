@@ -50,9 +50,10 @@ html {
 main {
     display: grid;
     grid-template-areas:
-        "head head head head head head head"
-        "side content content content content content content"
-        "foot foot foot foot foot foot foot";
+        "head head head head head head head head head head head head head head head head head"
+        "side content  content content content content content content content content content content content content content content content"
+        "foot foot foot foot foot foot foot foot foot foot foot foot foot foot foot foot foot";
+
 }
 
 header {
@@ -62,26 +63,19 @@ header {
 
 article {
     grid-area: content;
-    padding: 0px 8px;
+    margin-right: 8px;
 }
 
 nav,
 aside {
     grid-area: side;
-    color: #212529;
     line-height: 24px;
-    padding: 0px 8px;
+    padding-left: 8px;
     /* text-align: left; */
 }
 
 footer {
     grid-area: foot;
-
-    /* background-color:#ffffff;
-    color:#869099;
-    font-family:Source Sans Pro;
-    line-height:24px;
-    text-align:left; */
 }
 
 html {
@@ -101,7 +95,8 @@ body {
     line-height: 1.5;
     color: #212529;
     text-align: left;
-    background-color: #FCFFE7;
+
+    background-color: #1273697a;
 }
 
 h1,
@@ -194,7 +189,7 @@ a {
 }
 
 a:hover {
-    color: #BAD7E9;
+    color: #8fb6ce;
     text-decoration: none;
 }
 
@@ -458,21 +453,25 @@ button::-moz-focus-inner,
     height: 60px;
     padding: 8px;
     text-align: left;
+    border-bottom: 1.1px solid #82b4d7;
+    border-left: 1.4px solid #82b4d7;
 }
 
 .main-footer {
     position: relative;
     left: 1px;
-    top: 157px;
+    /* top: 157px; */
     will-change: top, left;
     padding: 0px 8px;
     font-family: Source Sans Pro;
-    margin: 0px 0px 0px 228px;
-    padding: 10px;
+    padding: 18px 0px 0px 17px;
+    margin-left: 8px;
+    margin-right: 8px;
+    background-color: #f3f0ca8a;
 }
 
 .brand-link {
-    color: #FCFFE7;
+    color: #7a6c24;
     font-family: Source Sans Pro;
     font-size: 20px;
     line-height: 30px;
@@ -495,45 +494,92 @@ button::-moz-focus-inner,
 }
 
 .sidebar {
-    color: #212529;
-    line-height: 24px;
-    padding: 0px 8px;
+    color: #ff0c0c;
+    line-height: 0px;
     text-align: left;
+    background-color: #12486B;
+    max-width: 260px;
+    min-width: 235px;
+    min-height: 460px;
+    border-left: 1.4px solid #82b4d7;
 }
 
 .nav-link {
     background-position: 0px 0px;
     border-radius: 4px;
-    color: #5dc3d3;
+    color: #c7ffede4;
     font-family: Source Sans Pro;
-    line-height: 24px;
-    padding: 8px 16px;
+    font-size: 17px;
+    line-height: 20px;
     text-align: left;
 }
 
-.i-sidebar {
-    color: #08616f;
-    display: inline-block;
-    font-weight: 900;
-    line-height: 16px;
-    padding: 0px 4.8px 0px 0px;
-    text-align: left;
+.nav-link:not(.active):hover {
+    color: #04bf8aef;
 }
+
 
 p {
-    color: #5dc3d3;
     display: inline-block;
     font-family: Source Sans Pro;
     line-height: 24px;
     text-align: left;
+
 }
 
-.nav-dopdown {
+.nav-dropdown {
     background-position: 0px 0px;
     border-radius: 0%;
-    color: #5dc3d3;
+    color: #7bc9c1;
     font-family: Source Sans Pro;
-    line-height: 24px;
-    padding: 8px 16px;
+    padding: 0px;
     text-align: left;
 }
+
+.nav-dropdown:not(.active):hover {
+    color: #04bf8aef;
+    /* border-radius: 2px; */
+    border-bottom: 1.5px solid rgba(104, 103, 103, 0.712);
+    border-top: 1.5px solid rgba(104, 103, 103, 0.712);
+}
+
+a.nav-dopdown:not(.active):hover {
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-color: #c2c5c7e8;
+    border-radius: 0%;
+
+}
+
+a.nav-dopdown:active {
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-color: #23ad36;
+    border-radius: 0%;
+    color: #5dd36b;
+
+}
+
+.nav-item {
+    padding-bottom: 3px;
+}
+
+.nav-item a p {
+    margin: auto;
+    /* border: 3px solid green; */
+    padding: 0px;
+}
+
+.nav .nav-item div a {
+    margin-right: 15px;
+    margin-left: 5px;
+    padding: 7px;
+}
+
+.nav-item div a p {
+    margin-left: 8px;
+}
+.nav li {
+    padding-bottom: 8px;
+}
+

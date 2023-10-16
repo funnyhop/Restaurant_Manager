@@ -22,7 +22,7 @@
 <body>
     <main>
         <header>
-            <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <nav class="main-header">
                 <!-- Left navbar links -->
                 <ul class="navbar-nav">
                     <a href="/sales" class="brand-link">
@@ -35,8 +35,8 @@
                     <li class="nav-item dropdown">
                         <!-- Sidebar user panel (optional) -->
                         <div class="d-flex" data-toggle="dropdown">
-                            <a href="#">Đăng nhập</a>
-                            <i class="fa-solid fa-user pl-3 pr-2"></i>
+                            <a href="#" style="color: #f4f6f9e2">Đăng nhập</a>
+                            <i class="fa-solid fa-user pl-3 pr-3 pt-1" style="color:aliceblue"></i>
                         </div>
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                             <a href="#" class="dropdown-item dropdown-header">Thông tin cá nhân</a>
@@ -52,85 +52,85 @@
         <aside>
             <div class="sidebar">
                 <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                <nav>
+                    <ul class="nav flex-column pt-2" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-item">
-                            <a href="#salescollapse" class="nav-link" data-toggle="collapse">
-                                <i class="fa-solid fa-cart-shopping i-sidebar"></i>
-                                <p>Bán hàng<span class="right badge badge-danger">Sales</span></p>
+                            <a href="#salescollapse" class="nav-link " data-toggle="collapse">
+                                <i class="fa-solid fa-cart-shopping "></i>
+                                <p>Bán hàng</p><span class="float-right badge badge-danger mr-2">Sales</span>
                             </a>
                             <div class="pl-4">
-                                <a href="sales" class="nav-link nav-dopdown collapse" id="salescollapse">
+                                <a href="#" class="nav-link nav-dropdown collapse" id="salescollapse">
                                     <p>Bán thuốc</p>
                                 </a>
-                                <a href="#" class="nav-link nav-dopdown collapse"
+                                <a href="#" class="nav-link nav-dropdown collapse"
                                     id="salescollapse">
                                     <p>Toa thuốc</p>
                                 </a>
-                                <a href="customers" class="nav-link nav-dopdown collapse" id="salescollapse">
+                                <a href="#" class="nav-link nav-dropdown collapse" id="salescollapse">
                                     <p>Khách hàng</p>
                                 </a>
                             </div>
                         </li>
                         <li class="nav-item">
                             <a href="#collapse1" class="nav-link" data-toggle="collapse">
-                                <i class="fa-solid fa-pills i-sidebar"></i>
-                                <p>Thuốc<span class="right badge badge-tealgr">Medicine</span></p>
+                                <i class="fa-solid fa-pills "></i>
+                                <p>Thuốc</p><span class="float-right badge badge-danger mr-2">Sales</span>
                             </a>
                             <div class="pl-4">
-                                <a href="producers" class="nav-link nav-dopdown collapse" id="collapse1">
+                                <a href="producers" class="nav-link nav-dropdown collapse" id="collapse1">
                                     <p>Nhà sản xuất</p>
                                 </a>
-                                <a href="suppliers" class="nav-link nav-dopdown collapse" id="collapse1">
+                                <a href="suppliers" class="nav-link nav-dropdown collapse" id="collapse1">
                                     <p>Nhà cung cấp</p>
                                 </a>
-                                <a href="druggr" class="nav-link nav-dopdown collapse" id="collapse1">
+                                <a href="druggr" class="nav-link nav-dropdown collapse" id="collapse1">
                                     <p>Thêm nhóm thuốc</p>
                                 </a>
-                                <a href="medicines" class="nav-link nav-dopdown collapse" id="collapse1">
+                                <a href="medicines" class="nav-link nav-dropdown collapse" id="collapse1">
                                     <p>Thêm thuốc</p>
                                 </a>
-                                <a href="prices" class="nav-link nav-dopdown collapse" id="collapse1">
+                                <a href="prices" class="nav-link nav-dropdown collapse" id="collapse1">
                                     <p>Giá thuốc</p>
                                 </a>
                             </div>
                         </li>
                         <li class="nav-item">
                             <a href="#collapse2" class="nav-link" data-toggle="collapse">
-                                <i class="fa-solid fa-warehouse i-sidebar"></i>
+                                <i class="fa-solid fa-warehouse "></i>
                                 <p>Quản lý kho</p>
                             </a>
                             <div class="pl-4">
-                                <a href="#" class="nav-link nav-dopdown collapse"
+                                <a href="#" class="nav-link nav-dropdown collapse"
                                     id="collapse2">
                                     <p>Nhập thuốc từ phiếu</p>
                                 </a>
-                                <a href="#" class="nav-link nav-dopdown collapse"
+                                <a href="#" class="nav-link nav-dropdown collapse"
                                     id="collapse2">
                                     <p>Danh sách phiếu nhập</p>
                                 </a>
-                                <a href="checkinventory" class="nav-link nav-dopdown collapse" id="collapse2">
+                                <a href="checkinventory" class="nav-link nav-dropdown collapse" id="collapse2">
                                     <p>Kiểm kho</p>
                                 </a>
                             </div>
                         </li>
                         <li class="nav-item">
                             <a href="staffs" class="nav-link">
-                                <i class="fa-solid fa-user-doctor i-sidebar"></i>
+                                <i class="fa-solid fa-user-doctor "></i>
                                 <p>Nhân viên</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#collapse4" class="nav-link" data-toggle="collapse">
-                                <i class="fa-solid fa-file-invoice i-sidebar"></i>
+                                <i class="fa-solid fa-file-invoice "></i>
                                 <p>Quản lý hóa đơn</p>
                             </a>
                             <div class="pl-4">
-                                <a href="bills" class="nav-link nav-dopdown collapse" id="collapse4">
+                                <a href="bills" class="nav-link nav-dropdown collapse" id="collapse4">
                                     <p>Hóa đơn bán</p>
                                 </a>
-                                <a href="revenue" class="nav-link nav-dopdown collapse" id="collapse4">
+                                <a href="revenue" class="nav-link nav-dropdown collapse" id="collapse4">
                                     <p>Doanh thu</p>
                                 </a>
                             </div>
