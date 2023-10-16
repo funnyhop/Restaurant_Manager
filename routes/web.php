@@ -14,5 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layout.test');
+    return view('restaurant_manager.dishs');
+});
+Route::get('/res', function () {
+    return view('restaurant_manager.createdish');
 });
