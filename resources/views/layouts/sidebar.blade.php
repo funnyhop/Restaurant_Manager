@@ -2,8 +2,7 @@
     <div class="sidebar">
         <!-- Sidebar Menu -->
         <nav>
-            <ul class="nav flex-column pt-2" data-widget="treeview" role="menu"
-                data-accordion="false">
+            <ul class="nav flex-column pt-2" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
                     <a href="#sales" class="nav-link " data-toggle="collapse">
                         <i class="fa-solid fa-cart-shopping i-sidebar"></i>
@@ -11,10 +10,12 @@
                     </a>
                     <div class="pl-4">
                         <a href="#" class="nav-link nav-dropdown collapse" id="sales">
+                            <p>Bán hàng</p>
+                        </a>
+                        <a href="#" class="nav-link nav-dropdown collapse" id="sales">
                             <p>Đơn hàng</p>
                         </a>
-                        <a href="#" class="nav-link nav-dropdown collapse"
-                            id="sales">
+                        <a href="#" class="nav-link nav-dropdown collapse" id="sales">
                             <p>Đơn hàng của bản ăn</p>
                         </a>
                         <a href="#" class="nav-link nav-dropdown collapse" id="sales">
@@ -28,7 +29,7 @@
                         <p>Món ăn</p><span class="float-right badge badge-danger mr-2">Sales</span>
                     </a>
                     <div class="pl-4">
-                        <a href="#" class="nav-link nav-dropdown collapse" id="restaurant">
+                        <a href="{{ route('dishes') }}" class="nav-link nav-dropdown collapse" id="restaurant">
                             <p>Thêm món ăn</p>
                         </a>
                         <a href="#" class="nav-link nav-dropdown collapse" id="restaurant">
@@ -48,12 +49,10 @@
                         <p>Nhân sự</p>
                     </a>
                     <div class="pl-4">
-                        <a href="#" class="nav-link nav-dropdown collapse"
-                            id="hrm">
+                        <a href="#" class="nav-link nav-dropdown collapse" id="hrm">
                             <p>Nhân viên</p>
                         </a>
-                        <a href="#" class="nav-link nav-dropdown collapse"
-                            id="hrm">
+                        <a href="#" class="nav-link nav-dropdown collapse" id="hrm">
                             <p>Đăng ký</p>
                         </a>
                         <a href="#" class="nav-link nav-dropdown collapse" id="hrm">

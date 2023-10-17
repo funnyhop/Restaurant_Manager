@@ -38,9 +38,9 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="float-right d-inline-flex pr-2">
-                        <li class="pr-1"><a href="druggr">Danh sách</a></li>
+                        <li class="pr-1"><a href="{{ route('dishes') }}">Danh sách</a></li>
                         <a href="#">/</a>
-                        <li class="pl-1"><a href="druggr/create">Thêm</a></li>
+                        <li class="pl-1"><a href="{{ route('dishes.create') }}">Thêm</a></li>
                     </div>
                     <div class="row pt-5 pl-4 d-flex">
                         <div class="col-1"></div>
@@ -56,14 +56,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($drs as $dr)
+                                    @foreach ($list as $dish)
                                         <tr>
-                                            <td>{{ $dr->NhomthuocID }}</td>
-                                            <td class="text-left">{{ $dr->Tennhom }}</td>
-                                            <td><a href="druggr/{{ $dr->NhomthuocID }}/edit"><i
+                                            <td>{{ $dish->MonID }}</td>
+                                            <td>{{ $dish->TenMon }}</td>
+                                            <td>{{ $dish->DVT }}</td>
+                                            <td><a href="{{ route('dishes.edit', ['MonID' => $dish->MonID]) }}"><i
                                                         class="fa-solid fa-pen-to-square"></i></a></td>
                                             <td>
-                                                <form action="druggr/{{ $dr->NhomthuocID }}" method="post">
+                                                <form action="{{ route('dishes.edit', ['MonID' => $dish->MonID]) }}" method="post">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn-trash">
@@ -72,7 +73,7 @@
                                                 </form>
                                             </td>
                                         </tr>
-                                    @endforeach --}}
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
