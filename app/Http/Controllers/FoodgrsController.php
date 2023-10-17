@@ -2,16 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Foodgr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FoodgrsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    protected $foodgr;
+    public function __construct(){
+        $this->foodgr = new Foodgr();
+    }
     public function index()
     {
-        //
+        $key = request()->key;
+        $list = Foodgr::search($key)->get();
+        // $list = $this->foodgr->foodgrs();
+        return view('restaurant_manager.foodgrs',compact('list'));
     }
 
     /**
@@ -19,7 +28,7 @@ class FoodgrsController extends Controller
      */
     public function create()
     {
-        //
+        return view('restaurant_manager.createfoodgr');
     }
 
     /**
@@ -27,15 +36,12 @@ class FoodgrsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        $foodgr = Foodgr::create([
+            'NhomID' => $request->input('id'),
+            'TenNhom' => $request->input('name'),
+        ]);
+        $foodgr->save();
+        return redirect()->route('foodgrs');
     }
 
     /**
@@ -43,7 +49,8 @@ class FoodgrsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $foodgr = DB::table('foodgrs')->select('NhomID', 'TenNhom')->where('NhomID', $id)->first();
+        return view('restaurant_manager.editfoodgroup', compact('foodgr'));
     }
 
     /**
@@ -51,7 +58,12 @@ class FoodgrsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $foodgr = DB::table('foodgrs')->where('NhomID', $id)
+            ->update([
+                'NhomID' => request()->input('id'),
+                'TenNhom' => request()->input('name')
+            ]);
+        return redirect()->route('foodgrs');
     }
 
     /**
@@ -59,6 +71,8 @@ class FoodgrsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $foodgr = DB::table('foodgrs')->where('NhomID', $id);
+        $foodgr->delete();
+        return redirect()->route('foodgrs');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dish;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DishController extends Controller
 {
@@ -37,9 +38,10 @@ class DishController extends Controller
             'MonID' => $request->input('id'),
             'TenMon' => $request->input('name'),
             'DVT' => $request->input('dvt'),
-            'foodgr_id' => $request->input('foodgr_id'),
-
+            'foodgr_id' => $request->input('foodgr_id')
         ]);
+        $dish->save();
+        return redirect()->route('dishs');
     }
 
     /**
@@ -47,7 +49,8 @@ class DishController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dish = DB::table('dishes')->select('MonID', 'TenMon', 'DVT', 'foodgr_id')->first();
+        return view('restaurant_manager.editdish', compact('dish'));
     }
 
     /**
@@ -55,7 +58,15 @@ class DishController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $dish = DB::table('dishes')->where('MonID', $id)
+            ->update([
+                'MonID' => $id,
+                'TenMon' => $request->input('name'),
+                'DVT' => $request->input('dvt'),
+                'foodgr_id' => $request->input('foodgr_id')
+                //                'updated_at'=>Carbon::now()
+            ]);
+        return redirect()->route('dishes');
     }
 
     /**
@@ -63,6 +74,8 @@ class DishController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $dish = DB::table('dishes')->where('MonID', $id);
+        $dish->delete();
+        return redirect()->route('dishes');
     }
 }

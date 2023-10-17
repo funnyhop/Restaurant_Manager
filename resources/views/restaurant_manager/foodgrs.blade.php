@@ -38,9 +38,9 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="float-right d-inline-flex pr-2">
-                        <li class="pr-1"><a href="{{ route('dishes') }}">Danh sách</a></li>
+                        <li class="pr-1"><a href="{{ route('foodgrs') }}">Danh sách</a></li>
                         <a href="#">/</a>
-                        <li class="pl-1"><a href="{{ route('dishes.create') }}">Thêm</a></li>
+                        <li class="pl-1"><a href="{{ route('foodgrs.create') }}">Thêm</a></li>
                     </div>
                     <div class="row pt-5 pl-4 d-flex">
                         <div class="col-1"></div>
@@ -48,34 +48,32 @@
                             <table class="table table-bordered text-center table-hover table-info">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th>Mã món ăn</th>
-                                        <th>Tên món ăn</th>
-                                        <th>Đơn vị tính</th>
-                                        <th>Nhóm món ăn</th>
+                                        <th>Mã nhóm món ăn</th>
+                                        <th>Tên nhóm món ăn</th>
                                         <th>Cập nhật</th>
                                         <th>Xóa</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($list as $dish)
+                                    @foreach ($list as $foodgr)
                                         <tr>
-                                            <td>{{ $dish->MonID }}</td>
-                                            <td>{{ $dish->TenMon }}</td>
-                                            <td>{{ $dish->DVT }}</td>
-                                            <td>{{ $dish->foodgr_id }}</td>
-                                            <td><a href="{{ route('dishes.edit', ['MonID' => $dish->MonID]) }}"><i
+                                            <td>{{ $foodgr->NhomID }}</td>
+                                            <td>{{ $foodgr->TenNhom }}</td>
+                                            <td><a href="{{ route('foodgrs.edit', ['NhomID' => $foodgr->NhomID]) }}"><i
                                                         class="fa-solid fa-pen-to-square"></i></a></td>
                                             <td>
-                                                <form action="{{ route('dishes.edit', ['MonID' => $dish->MonID]) }}" method="post">
+                                                <form action="{{ route('foodgrs.destroy', ['NhomID' => $foodgr->NhomID]) }}"
+                                                    method="post">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn-trash">
-                                                        <i class="fa-solid fa-trash "></i>
+                                                        <i class="fa-solid fa-trash"></i>
                                                     </button>
                                                 </form>
                                             </td>
                                         </tr>
                                     @endforeach
+
                                 </tbody>
                             </table>
                         </div>

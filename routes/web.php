@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DishController;
 use App\Http\Controllers\PricesController;
+use App\Http\Controllers\FoodgrsController;
 
 
 //<staff>
@@ -15,11 +16,17 @@ use App\Http\Controllers\PricesController;
     Route::get('dishes', [DishController::class, 'index'])->name('dishes');
     Route::get('dishes/create', [DishController::class, 'create'])->name('dishes.create');
     Route::post('dishes',[DishController::class,'store'])->name('dishes.store');
-    Route::get('dishes/{$id}/edit', [DishController::class, 'edit'])->name('dishes.edit');
-    Route::match(['put','patch'],'dishes/{$id}', [DishController::class, 'update'])->name('dishes.update');
-    Route::delete('dishes/{$id}',[DishController::class, 'destroy'])->name('dishes.destroy');
+    Route::get('dishes/{id}/edit', [DishController::class, 'edit'])->name('dishes.edit');
+    Route::match(['put','patch'],'dishes/{id}', [DishController::class, 'update'])->name('dishes.update');
+    Route::delete('dishes/{id}',[DishController::class, 'destroy'])->name('dishes.destroy');
 //</dish>
 //<food group>
+    Route::get('foodgrs', [FoodgrsController::class, 'index'])->name('foodgrs');
+    Route::get('foodgrs/create', [FoodgrsController::class, 'create'])->name('foodgrs.create');
+    Route::post('foodgrs',[FoodgrsController::class,'store'])->name('foodgrs.store');
+    Route::get('foodgrs/{NhomID}', [FoodgrsController::class, 'edit'])->name('foodgrs.edit');
+    Route::match(['put','patch'],'foodgrs/{NhomID}', [FoodgrsController::class, 'update'])->name('foodgrs.update');
+    Route::delete('foodgrs/{NhomID}',[FoodgrsController::class, 'destroy'])->name('foodgrs.destroy');
 //</food group>
 //<price>
 //</price>
