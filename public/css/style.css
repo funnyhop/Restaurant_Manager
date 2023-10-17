@@ -598,7 +598,10 @@ body,
 }
 
 .content-wrapper {
-    min-height: 100%;
+    /* background: #D2E8E3; */
+    min-height: 493px;
+
+    /* min-height: 100%; */
     background: #1273697a;
 }
 

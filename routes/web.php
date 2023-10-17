@@ -3,11 +3,18 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DishController;
 use App\Http\Controllers\PriceController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\FoodgrController;
 use App\Http\Controllers\CustomerController;
 
 
 //<staff>
+    Route::get('staffs', [StaffController::class, 'index'])->name('staffs');
+    Route::get('staffs/create', [StaffController::class, 'create'])->name('staffs.create');
+    Route::post('staffs',[StaffController::class,'store'])->name('staffs.store');
+    Route::get('staffs/{NVID}', [StaffController::class, 'edit'])->name('staffs.edit');
+    Route::match(['put','patch'],'staffs/{NVID}', [StaffController::class, 'update'])->name('staffs.update');
+    Route::delete('staffs/{NVID}',[StaffController::class, 'destroy'])->name('staffs.destroy');
 //</staff>
 //<shift>
 //</shift>

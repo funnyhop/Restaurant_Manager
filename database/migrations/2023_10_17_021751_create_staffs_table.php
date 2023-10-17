@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('DiaChi');
             $table->string('ChucVu', 50);
             $table->string('SDT', 10);
-            $table->string('MatKhau', 50);
+            $table->string('MatKhau', 50)->nullable();
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@
                             <p>Đơn hàng</p>
                         </a>
                         <a href="#" class="nav-link nav-dropdown collapse" id="sales">
-                            <p>Đơn hàng của bản ăn</p>
+                            <p>Đơn hàng của bàn ăn</p>
                         </a>
                         <a href="{{ route('customers') }}" class="nav-link nav-dropdown collapse" id="sales">
                             <p>Khách hàng</p>
@@ -49,7 +49,7 @@
                         <p>Nhân sự</p>
                     </a>
                     <div class="pl-4">
-                        <a href="#" class="nav-link nav-dropdown collapse" id="hrm">
+                        <a href="{{ route('staffs') }}" class="nav-link nav-dropdown collapse" id="hrm">
                             <p>Nhân viên</p>
                         </a>
                         <a href="#" class="nav-link nav-dropdown collapse" id="hrm">

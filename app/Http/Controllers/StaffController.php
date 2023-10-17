@@ -2,16 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Staff;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StaffController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    protected $staff;
+    public function __contruct(){
+        $this->staff = new Staff();
+    }
     public function index()
     {
-        //
+        $key = request()->key;
+        $list = Staff::search($key)->get();
+        return view('HRM.staff', compact('list'));
     }
 
     /**
@@ -19,7 +27,7 @@ class StaffController extends Controller
      */
     public function create()
     {
-        //
+        return view('HRM.createstaff');
     }
 
     /**
@@ -27,15 +35,18 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        $staff = Staff::create([
+            'NVID' => $request->input('id'),
+            'TenNV' => $request->input('name'),
+            'NgaySinh' => $request->input('ns'),
+            'GT' => $request->input('gt'),
+            'SDT' => $request->input('phone'),
+            'DiaChi' => $request->input('address'),
+            'ChucVu' => $request->input('cv'),
+            // 'MatKhau' => $request->input('cv')
+        ]);
+        $staff->save();
+        return redirect()->route('staffs')->with('success','Thêm nhân viên thành công!');
     }
 
     /**
@@ -43,7 +54,8 @@ class StaffController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $staff = DB::table('staffs')->select('TenNV', 'NVID', 'GT', 'DiaChi', 'SDT', 'NgaySinh', 'MatKhau','ChucVu')->where('NVID', $id)->first();
+        return view('HRM.editstaff', compact('staff'));
     }
 
     /**
@@ -51,7 +63,17 @@ class StaffController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $staff = DB::table('staffs')->where('NVID', $id)
+            ->update([
+                'NVID' => $request->input('id'),
+                'TenNV' => $request->input('name'),
+                'NgaySinh' => $request->input('ns'),
+                'GT' => $request->input('gt'),
+                'SDT' => $request->input('phone'),
+                'DiaChi' => $request->input('address'),
+                'ChucVu' => $request->input('cv')
+            ]);
+        return redirect()->route('staffs');
     }
 
     /**
@@ -59,6 +81,8 @@ class StaffController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $staff = DB::table('staffs')->where('NVID', $id);
+        $staff->delete();
+        return redirect()->route('staffs');
     }
 }
