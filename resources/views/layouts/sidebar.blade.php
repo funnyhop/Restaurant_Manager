@@ -58,7 +58,7 @@
                         <a href="#" class="nav-link nav-dropdown collapse" id="hrm">
                             <p>Phân công</p>
                         </a>
-                        <a href="#" class="nav-link nav-dropdown collapse" id="hrm">
+                        <a href="{{ route('shifts') }}" class="nav-link nav-dropdown collapse" id="hrm">
                             <p>Ca làm</p>
                         </a>
                     </div>

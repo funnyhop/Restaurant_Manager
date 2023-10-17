@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DishController;
 use App\Http\Controllers\PriceController;
+use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\FoodgrController;
 use App\Http\Controllers\CustomerController;
@@ -17,6 +18,12 @@ use App\Http\Controllers\CustomerController;
     Route::delete('staffs/{NVID}',[StaffController::class, 'destroy'])->name('staffs.destroy');
 //</staff>
 //<shift>
+    Route::get('shifts', [ShiftController::class, 'index'])->name('shifts');
+    Route::get('shifts/create', [ShiftController::class, 'create'])->name('shifts.create');
+    Route::post('shifts',[ShiftController::class,'store'])->name('shifts.store');
+    Route::get('shifts/{CaID}', [ShiftController::class, 'edit'])->name('shifts.edit');
+    Route::match(['put','patch'],'shifts/{CaID}', [ShiftController::class, 'update'])->name('shifts.update');
+    Route::delete('shifts/{CaID}',[ShiftController::class, 'destroy'])->name('shifts.destroy');
 //</shift>
 //<customer>
     Route::get('customers', [CustomerController::class, 'index'])->name('customers');

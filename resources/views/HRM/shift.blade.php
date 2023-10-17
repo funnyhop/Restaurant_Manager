@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    <title>Nhóm món ăn</title>
+    <title>Ca làm</title>
 @endsection
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -11,7 +11,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h4 class="ml-3 text-dark" style="font-family: scandia-web">Nhóm món ăn</h4>
+                            <h4 class="ml-3 text-dark" style="font-family: scandia-web">Ca làm</h4>
                         </div>
                         <!-- /.col -->
                         <div class="col-sm-6">
@@ -38,9 +38,9 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="float-right d-inline-flex pr-2">
-                        <li class="pr-1"><a href="{{ route('foodgrs') }}">Danh sách</a></li>
+                        <li class="pr-1"><a href="{{ route('shifts') }}">Danh sách</a></li>
                         <a href="#">/</a>
-                        <li class="pl-1"><a href="{{ route('foodgrs.create') }}">Thêm</a></li>
+                        <li class="pl-1"><a href="{{ route('shifts.create') }}">Thêm</a></li>
                     </div>
                     <div class="row pt-5 pl-4 d-flex">
                         <div class="col-1"></div>
@@ -48,32 +48,34 @@
                             <table class="table table-bordered text-center table-hover table-info">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th>Mã nhóm món ăn</th>
-                                        <th>Tên nhóm món ăn</th>
+                                        <th>Mã ca làm</th>
+                                        <th>Giờ bắt đầu</th>
+                                        <th>Giờ kết thúc</th>
+                                        <th>Lương</th>
                                         <th>Cập nhật</th>
                                         <th>Xóa</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($list as $foodgr)
+                                    @foreach ($list as $shift)
                                         <tr>
-                                            <td>{{ $foodgr->NhomID }}</td>
-                                            <td>{{ $foodgr->TenNhom }}</td>
-                                            <td><a href="{{ route('foodgrs.edit', ['NhomID' => $foodgr->NhomID]) }}"><i
+                                            <td>{{ $shift->CaID }}</td>
+                                            <td>{{ $shift->ShiftStart }}</td>
+                                            <td>{{ $shift->ShiftEnd }}</td>
+                                            <td>{{ $shift->Luong }}</td>
+                                            <td><a href="{{ route('shifts.edit', ['CaID' => $shift->CaID]) }}"><i
                                                         class="fa-solid fa-pen-to-square"></i></a></td>
                                             <td>
-                                                <form action="{{ route('foodgrs.destroy', ['NhomID' => $foodgr->NhomID]) }}"
-                                                    method="post">
+                                                <form action="{{ route('shifts.edit', ['CaID' => $shift->CaID]) }}" method="post">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn-trash">
-                                                        <i class="fa-solid fa-trash"></i>
+                                                        <i class="fa-solid fa-trash "></i>
                                                     </button>
                                                 </form>
                                             </td>
                                         </tr>
                                     @endforeach
-
                                 </tbody>
                             </table>
                         </div>
