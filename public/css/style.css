@@ -72,6 +72,7 @@ aside {
     line-height: 24px;
     padding-left: 8px;
     /* text-align: left; */
+    min-height: 100%;
 }
 
 footer {
@@ -495,7 +496,9 @@ button::-moz-focus-inner,
     background-color: #12486B;
     max-width: 260px;
     min-width: 227px;
-    min-height: 493px;
+    /* min-height: 493px; */
+    min-height:100%;
+
     border-left: 1.4px solid #82b4d7;
 }
 
@@ -595,8 +598,7 @@ body,
 }
 
 .content-wrapper {
-    /* background: #D2E8E3; */
-    min-height: 493px;
+    min-height: 100%;
     background: #1273697a;
 }
 
