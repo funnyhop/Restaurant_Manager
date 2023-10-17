@@ -6,7 +6,7 @@ use App\Models\Foodgr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class FoodgrsController extends Controller
+class FoodgrController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class FoodgrsController extends Controller
         $key = request()->key;
         $list = Foodgr::search($key)->get();
         // $list = $this->foodgr->foodgrs();
-        return view('restaurant_manager.foodgrs',compact('list'));
+        return view('restaurant_manager.foodgr',compact('list'));
     }
 
     /**
@@ -50,7 +50,7 @@ class FoodgrsController extends Controller
     public function edit(string $id)
     {
         $foodgr = DB::table('foodgrs')->select('NhomID', 'TenNhom')->where('NhomID', $id)->first();
-        return view('restaurant_manager.editfoodgroup', compact('foodgr'));
+        return view('restaurant_manager.editfoodgr', compact('foodgr'));
     }
 
     /**

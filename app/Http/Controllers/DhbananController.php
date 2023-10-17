@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PricesController extends Controller
+class DhbananController extends Controller
 {
     /**
      * Display a listing of the resource.
