@@ -16,9 +16,9 @@ use App\Http\Controllers\FoodgrsController;
     Route::get('dishes', [DishController::class, 'index'])->name('dishes');
     Route::get('dishes/create', [DishController::class, 'create'])->name('dishes.create');
     Route::post('dishes',[DishController::class,'store'])->name('dishes.store');
-    Route::get('dishes/{id}/edit', [DishController::class, 'edit'])->name('dishes.edit');
-    Route::match(['put','patch'],'dishes/{id}', [DishController::class, 'update'])->name('dishes.update');
-    Route::delete('dishes/{id}',[DishController::class, 'destroy'])->name('dishes.destroy');
+    Route::get('dishes/{MonID}', [DishController::class, 'edit'])->name('dishes.edit');
+    Route::match(['put','patch'],'dishes/{MonID}', [DishController::class, 'update'])->name('dishes.update');
+    Route::delete('dishes/{MonID}',[DishController::class, 'destroy'])->name('dishes.destroy');
 //</dish>
 //<food group>
     Route::get('foodgrs', [FoodgrsController::class, 'index'])->name('foodgrs');

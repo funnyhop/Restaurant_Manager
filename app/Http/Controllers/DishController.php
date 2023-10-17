@@ -17,7 +17,9 @@ class DishController extends Controller
     }
     public function index()
     {
-        $list = $this->dish->dishes();
+        // $list = $this->dish->dishes();
+        $key = request()->key;
+        $list = Dish::search($key)->get();
         return view('restaurant_manager.dishs', compact('list'));
     }
 
@@ -34,14 +36,14 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
-        $dish = DB::table('dishes')->create([
+        $dish = Dish::create([
             'MonID' => $request->input('id'),
             'TenMon' => $request->input('name'),
             'DVT' => $request->input('dvt'),
             'foodgr_id' => $request->input('foodgr_id')
         ]);
         $dish->save();
-        return redirect()->route('dishs');
+        return redirect()->route('dishes');
     }
 
     /**
@@ -49,7 +51,7 @@ class DishController extends Controller
      */
     public function edit($id)
     {
-        $dish = DB::table('dishes')->select('MonID', 'TenMon', 'DVT', 'foodgr_id')->first();
+        $dish = DB::table('dishes')->select('MonID', 'TenMon', 'DVT', 'foodgr_id')->where('MonID', $id)->first();
         return view('restaurant_manager.editdish', compact('dish'));
     }
 

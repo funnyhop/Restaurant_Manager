@@ -18,4 +18,14 @@ class Dish extends Model
         $dish = DB::table('dishes')->select('MonID', 'TenMon', 'DVT', 'foodgr_id')->get();
         return $dish;
     }
+    public function scopeSearch($query, $key) {
+        // $key = request()->key; // Retrieve the key from the request;
+        if ($key = request()->key) {
+            return $query->where('MonID', 'like', '%' . $key . '%')
+                ->orWhere('TenMon', 'like', '%' . $key . '%')
+                ->orWhere('foodgr_id', 'like', '%' . $key . '%')
+                ->orWhere('DVT', 'like', '%' . $key . '%');
+        }
+        return $query;
+    }
 }
