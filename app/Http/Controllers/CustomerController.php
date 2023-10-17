@@ -2,16 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    protected $customer;
+    public function __contruct(){
+        $this->customer = new Customer();
+    }
     public function index()
     {
-        //
+        $key = request()->key;
+        $list = Customer::search($key)->get();
+        return view('bills_manager.customer', compact('list'));
     }
 
     /**
@@ -19,7 +27,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('bills_manager.createcustomer');
     }
 
     /**
@@ -27,15 +35,16 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $customer = Customer::create([
+            'KHID' => $request->input('id'),
+            'TenKH' => $request->input('name'),
+            'DiaChi' => $request->input('address'),
+            'SDT' => $request->input('phone'),
+            'GT' => $request->input('gt')
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        ]);
+        $customer->save();
+        return redirect()->route('customers');
     }
 
     /**
@@ -43,7 +52,8 @@ class CustomerController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $customer = DB::table('customers')->select('KHID', 'TenKH', 'SDT', 'DiaChi', 'GT')->where('KHID', $id)->first();
+        return view('bills_manager.editcustomer', compact('customer'));
     }
 
     /**
@@ -51,7 +61,15 @@ class CustomerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $customer = DB::table('customers')->where('KHID', $id)
+        ->update([
+            'KHID' => $request->input('id'),
+            'TenKH' => $request->input('name'),
+            'DiaChi' => $request->input('address'),
+            'SDT' => $request->input('phone'),
+            'GT' => $request->input('gt')
+        ]);
+        return redirect()->route('customers');
     }
 
     /**
@@ -59,6 +77,8 @@ class CustomerController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $customer = DB::table('customers')->where('KHID', $id);
+        $customer->delete();
+        return redirect()->route('customers');
     }
 }

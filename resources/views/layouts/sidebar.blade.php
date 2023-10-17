@@ -18,7 +18,7 @@
                         <a href="#" class="nav-link nav-dropdown collapse" id="sales">
                             <p>Đơn hàng của bản ăn</p>
                         </a>
-                        <a href="#" class="nav-link nav-dropdown collapse" id="sales">
+                        <a href="{{ route('customers') }}" class="nav-link nav-dropdown collapse" id="sales">
                             <p>Khách hàng</p>
                         </a>
                     </div>
