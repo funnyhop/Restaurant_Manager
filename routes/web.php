@@ -7,6 +7,7 @@ use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\FoodgrController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DinnertableController;
 
 
 //<staff>
@@ -52,6 +53,12 @@ use App\Http\Controllers\CustomerController;
 //<price>
 //</price>
 //<dinner table>
+    Route::get('dinnertbs', [DinnertableController::class, 'index'])->name('dinnertbs');
+    Route::get('dinnertbs/create', [DinnertableController::class, 'create'])->name('dinnertbs.create');
+    Route::post('dinnertbs',[DinnertableController::class,'store'])->name('dinnertbs.store');
+    Route::get('dinnertbs/{BanID}', [DinnertableController::class, 'edit'])->name('dinnertbs.edit');
+    Route::match(['put','patch'],'dinnertbs/{BanID}', [DinnertableController::class, 'update'])->name('dinnertbs.update');
+    Route::delete('dinnertbs/{BanID}',[DinnertableController::class, 'destroy'])->name('dinnertbs.destroy');
 //</dinner table>
 //<dh_banan>
 //</dh_banan>
