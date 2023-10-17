@@ -38,7 +38,7 @@
                         <a href="{{ route('foodgrs') }}" class="nav-link nav-dropdown collapse" id="restaurant">
                             <p>Nhóm món ăn</p>
                         </a>
-                        <a href="#" class="nav-link nav-dropdown collapse" id="restaurant">
+                        <a href="{{ route('prices') }}" class="nav-link nav-dropdown collapse" id="restaurant">
                             <p>Giá món ăn</p>
                         </a>
                     </div>

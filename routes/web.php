@@ -51,6 +51,12 @@ use App\Http\Controllers\DinnertableController;
     Route::delete('foodgrs/{NhomID}',[FoodgrController::class, 'destroy'])->name('foodgrs.destroy');
 //</food group>
 //<price>
+    Route::get('prices', [PriceController::class, 'index'])->name('prices');
+    Route::get('prices/create', [PriceController::class, 'create'])->name('prices.create');
+    Route::post('prices',[PriceController::class,'store'])->name('prices.store');
+    Route::get('prices/{dish_id}/{day_id}', [PriceController::class, 'edit'])->name('prices.edit');
+    Route::match(['put','patch'],'prices/{dish_id}/{day_id}', [PriceController::class, 'update'])->name('prices.update');
+    Route::delete('prices/{dish_id}/{day_id}',[PriceController::class, 'destroy'])->name('prices.destroy');
 //</price>
 //<dinner table>
     Route::get('dinnertbs', [DinnertableController::class, 'index'])->name('dinnertbs');
@@ -75,7 +81,7 @@ use App\Http\Controllers\DinnertableController;
 
 //<reveneu>
 //</reveneu>
-Route::resource('/prices', PriceController::class);
+
 
 
 
