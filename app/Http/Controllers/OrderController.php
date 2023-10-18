@@ -2,16 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    protected $order;
+    public function __construct() {
+        $this->order = new Order();
+    }
     public function index()
     {
-        //
+        // $list = $this->order->orderes();
+        $key = request()->key;
+        $list = Order::search($key)->get();
+        return view('bills_manager.order', compact('list'));
     }
 
     /**
@@ -19,7 +29,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $list = DB::table('customers')->select('KHID', 'TenKH')->get();
+        return view('bills_manager.createorder', compact('list'));
     }
 
     /**
@@ -27,23 +38,23 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        $order = Order::create([
+            'DonID' => $request->input('id'),
+            'customer_id' => $request->input('customer_id'),
+            'SoKhach' => $request->input('sk'),
+            'TrangThai' => $request->input('tt')
+        ]);
+        $order->save();
+        return redirect()->route('orders');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $order = DB::table('orders')->select('DonID', 'SoKhach', 'customer_id', 'TrangThai')->where('DonID', $id)->first();
+        return view('bills_manager.editorder', compact('order'));
     }
 
     /**
@@ -51,7 +62,14 @@ class OrderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $order = DB::table('orders')->where('DonID', $id)
+            ->update([
+                'DonID' => $request->input('id'),
+                'customer_id' => $request->input('customer_id'),
+                'SoKhach' => $request->input('sk'),
+                'TrangThai' => $request->input('tt')
+            ]);
+        return redirect()->route('orders');
     }
 
     /**
@@ -59,6 +77,8 @@ class OrderController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $order = DB::table('orders')->where('DonID', $id);
+        $order->delete();
+        return redirect()->route('orders');
     }
 }

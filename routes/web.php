@@ -2,11 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DishController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\FoodgrController;
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\DhbananController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\DinnertableController;
@@ -69,10 +71,22 @@ use App\Http\Controllers\DinnertableController;
     Route::delete('dinnertbs/{BanID}',[DinnertableController::class, 'destroy'])->name('dinnertbs.destroy');
 //</dinner table>
 //<dh_banan>
+    Route::get('dh_banans', [DhbananController::class, 'index'])->name('dh_banans');
+    Route::get('dh_banans/create', [DhbananController::class, 'create'])->name('dh_banans.create');
+    Route::post('dh_banans',[DhbananController::class,'store'])->name('dh_banans.store');
+    Route::get('dh_banans/{order_id}/{dinnertb_id}', [DhbananController::class, 'edit'])->name('dh_banans.edit');
+    Route::match(['put','patch'],'dh_banans/{order_id}/{dinnertb_id}', [DhbananController::class, 'update'])->name('dh_banans.update');
+    Route::delete('dh_banans/{order_id}/{dinnertb_id}',[DhbananController::class, 'destroy'])->name('dh_banans.destroy');
 //</dh_banan>
 //<sales>
 //</sales>
 //<order>
+    Route::get('orders', [OrderController::class, 'index'])->name('orders');
+    Route::get('orders/create', [OrderController::class, 'create'])->name('orders.create');
+    Route::post('orders',[OrderController::class,'store'])->name('orders.store');
+    Route::get('orders/{DonID}', [OrderController::class, 'edit'])->name('orders.edit');
+    Route::match(['put','patch'],'orders/{DonID}', [OrderController::class, 'update'])->name('orders.update');
+    Route::delete('orders/{DonID}',[OrderController::class, 'destroy'])->name('orders.destroy');
 //</order>
 //<ghidh>
 //</ghidh>

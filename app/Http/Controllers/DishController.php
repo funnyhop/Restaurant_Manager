@@ -28,7 +28,8 @@ class DishController extends Controller
      */
     public function create()
     {
-        return view('restaurant_manager.createdish');
+        $list = DB::table('foodgrs')->select('NhomID', 'TenNhom')->get();
+        return view('restaurant_manager.createdish', compact('list'));
     }
 
     /**
