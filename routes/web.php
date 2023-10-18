@@ -6,7 +6,9 @@ use App\Http\Controllers\PriceController;
 use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\FoodgrController;
+use App\Http\Controllers\SignupController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\DinnertableController;
 
 
@@ -75,8 +77,20 @@ use App\Http\Controllers\DinnertableController;
 //<ghidh>
 //</ghidh>
 //<phancong assignment>
+    Route::get('assignments', [AssignmentController::class, 'index'])->name('assignments');
+    Route::get('assignments/create', [AssignmentController::class, 'create'])->name('assignments.create');
+    Route::post('assignments',[AssignmentController::class,'store'])->name('assignments.store');
+    Route::get('assignments/{staff_id}/{day_id}/{dinnertb_id}', [AssignmentController::class, 'edit'])->name('assignments.edit');
+    Route::match(['put','patch'],'assignments/{staff_id}/{day_id}/{dinnertb_id}', [AssignmentController::class, 'update'])->name('assignments.update');
+    Route::delete('assignments/{staff_id}/{day_id}/{dinnertb_id}',[AssignmentController::class, 'destroy'])->name('assignments.destroy');
 //</phancong assignment>
 //<sign up>
+    Route::get('signups', [SignupController::class, 'index'])->name('signups');
+    Route::get('signups/create', [SignupController::class, 'create'])->name('signups.create');
+    Route::post('signups',[SignupController::class,'store'])->name('signups.store');
+    Route::get('signups/{staff_id}/{day_id}/{shift_id}', [SignupController::class, 'edit'])->name('signups.edit');
+    Route::match(['put','patch'],'signups/{staff_id}/{day_id}/{shift_id}', [SignupController::class, 'update'])->name('signups.update');
+    Route::delete('signups/{staff_id}/{day_id}/{shift_id}',[SignupController::class, 'destroy'])->name('signups.destroy');
 //</sign up>
 
 //<reveneu>

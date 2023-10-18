@@ -52,10 +52,10 @@
                         <a href="{{ route('staffs') }}" class="nav-link nav-dropdown collapse" id="hrm">
                             <p>Nhân viên</p>
                         </a>
-                        <a href="#" class="nav-link nav-dropdown collapse" id="hrm">
+                        <a href="{{ route('signups') }}" class="nav-link nav-dropdown collapse" id="hrm">
                             <p>Đăng ký</p>
                         </a>
-                        <a href="#" class="nav-link nav-dropdown collapse" id="hrm">
+                        <a href="{{ route('assignments') }}" class="nav-link nav-dropdown collapse" id="hrm">
                             <p>Phân công</p>
                         </a>
                         <a href="{{ route('shifts') }}" class="nav-link nav-dropdown collapse" id="hrm">
