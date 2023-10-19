@@ -23,7 +23,7 @@
             <div class="container-fluid">
                 <div class="pt-2 pb-5">
                     <div style="border: 1px solid #bfdfd5" class="col-4 mx-auto">
-                        <form action="{{ route('updatehd', ['HDID' => $bill->HDID]) }}" method="post">
+                        <form action="{{ route('pay.update', ['HDID' => $bill->HDID]) }}" method="post">
                             @csrf
                             @method('PUT')
                             <div class="d-block pt-3 mb-2 text-lg-center">

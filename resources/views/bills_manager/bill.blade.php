@@ -51,7 +51,8 @@
                                         <th>Trị giá <i>(vnđ)</i></th>
                                         <th>Thanh toán</th>
                                         <th>Tên món</th>
-                                        <th>Số lượng <i>(viên)</i></th>
+                                        <th>DVT</th>
+                                        <th>Số lượng</th>
                                         <th>Đơn giá <i>(vnđ)</i></th>
                                     </tr>
                                 </thead>
@@ -74,7 +75,7 @@
                                                 {{ number_format($bill->TongTien, 2, '.', ',') }}
                                             </td>
                                             <td rowspan="{{ $rowCount + 1 }}">
-                                                {{-- <a href="{{ route('pay', ['HDID' => $bill->HDID]) }}"><i class="fa-solid fa-money-bill-1-wave"></i></a> --}}
+                                                <a href="{{ route('pay', ['HDID' => $bill->HDID]) }}"><i class="fa-solid fa-money-bill-1-wave"></i></a>
                                             </td>
                                         </tr>
                                         @foreach ($list_gdh as $gdh)
@@ -83,6 +84,7 @@
                                                     @foreach ($list_dish as $dish)
                                                         @if ($gdh->dish_id == $dish->MonID)
                                                             <td>{{ $dish->TenMon }}</td>
+                                                            <td>{{ $dish->DVT }}</td>
                                                         @endif
                                                     @endforeach
                                                     <td>{{ $gdh->SoLuong }}</td>

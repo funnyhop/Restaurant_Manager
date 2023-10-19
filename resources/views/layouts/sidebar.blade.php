@@ -18,6 +18,9 @@
                         <a href="{{ route('orders') }}" class="nav-link nav-dropdown collapse" id="sales">
                             <p>Đơn hàng</p>
                         </a>
+                        <a href="{{ route('ghidhs') }}" class="nav-link nav-dropdown collapse" id="sales">
+                            <p>Ghi đơn hàng</p>
+                        </a>
                         <a href="{{ route('dh_banans') }}" class="nav-link nav-dropdown collapse" id="sales">
                             <p>Đơn hàng của bàn ăn</p>
                         </a>
@@ -26,7 +29,7 @@
                 <li class="nav-item">
                     <a href="#restaurant" class="nav-link" data-toggle="collapse">
                         <i class="fa-solid fa-plate-wheat i-sidebar"></i>
-                        <p>Món ăn</p><span class="float-right badge badge-danger mr-2">Sales</span>
+                        <p>Món ăn</p><span class="float-right badge badge-info mr-2">delicious</span>
                     </a>
                     <div class="pl-4">
                         <a href="{{ route('dishes') }}" class="nav-link nav-dropdown collapse" id="restaurant">

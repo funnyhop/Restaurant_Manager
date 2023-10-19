@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DishController;
+use App\Http\Controllers\GhidhController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\SalesController;
@@ -84,6 +85,8 @@ use App\Http\Controllers\DinnertableController;
     Route::get('sales', [SalesController::class, 'index'])->name('sales');
     Route::post('sales',[SalesController::class,'store'])->name('sales.store');
     Route::get('bills',[SalesController::class,'billindex'])->name('bills');
+    Route::get('pay',[SalesController::class,'printbill'])->name('pay');
+    Route::get('pay/{HDID}',[SalesController::class,'billupdate'])->name('pay.update');
 //</sales>
 //<order>
     Route::get('orders', [OrderController::class, 'index'])->name('orders');
@@ -94,6 +97,12 @@ use App\Http\Controllers\DinnertableController;
     Route::delete('orders/{DonID}',[OrderController::class, 'destroy'])->name('orders.destroy');
 //</order>
 //<ghidh>
+    Route::get('ghidhs', [GhidhController::class, 'index'])->name('ghidhs');
+    Route::get('ghidhs/create', [GhidhController::class, 'create'])->name('ghidhs.create');
+    Route::post('ghidhs',[GhidhController::class,'store'])->name('ghidhs.store');
+    Route::get('ghidhs/{dish_id}/{order_id}', [GhidhController::class, 'edit'])->name('ghidhs.edit');
+    Route::match(['put','patch'],'ghidhs/{dish_id}/{order_id}', [GhidhController::class, 'update'])->name('ghidhs.update');
+    Route::delete('ghidhs/{dish_id}/{order_id}',[GhidhController::class, 'destroy'])->name('ghidhs.destroy');
 //</ghidh>
 //<phancong assignment>
     Route::get('assignments', [AssignmentController::class, 'index'])->name('assignments');

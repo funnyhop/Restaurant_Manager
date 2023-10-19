@@ -110,11 +110,29 @@ class SalesController extends Controller
         $list_gdh = DB::table('ghidhs')->select('order_id', 'dish_id', 'SoLuong')->get();
         $prices = DB::table('prices')->select('dish_id', 'Gia')->get();
         $list_dish = Dish::all();
-        $ghidh_order_id = DB::table('ghidhs')->select('order_id')->first();
-        $bill_order_id = DB::table('bills')->select('order_id')->first();
 
-        return view('bills_manager.bill', compact('list_bill', 'list_gdh','prices','list_dish','bill_order_id','ghidh_order_id'));
+        return view('bills_manager.bill', compact('list_bill', 'list_gdh','prices','list_dish'));
     }
-
-
+    ///update bill
+    public function printbill(){
+        $bill = Bill::all()->first();
+        $order = Order::all()->first();
+        $customer = Customer::all()->first();
+        $staff = Staff::all()->first();
+        $price = DB::table('price')->select('dish_id', 'Gia')->first();
+        $gdh = DB::table('ghidhs')->select('dish_id', 'order_id', 'SoLuong')->first();
+        return view('bills_manager.printbill', compact('bill', 'order', 'gdh','staff','customer','price'));
+    }
+    public function billupdate(Request $request, $id){
+        $bill = DB::table('bills')->where('HDID', $id)
+            ->update([
+                'PhuThu' => $request->input('pt'),
+                'TongTien' => $request->input('tt'),
+            ]);
+        $order = DB::table('orders')->where('DonID', $request->input('order_id'))
+            ->update([
+                'TrangThai' => 2,
+            ]);
+        return redirect()->route('bills');
+    }
 }
