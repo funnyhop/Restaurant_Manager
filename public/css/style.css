@@ -475,6 +475,7 @@ button::-moz-focus-inner,
     line-height: 30px;
     padding: 13px 8px;
     text-align: left;
+
 }
 
 .brand-link img {
@@ -489,6 +490,7 @@ button::-moz-focus-inner,
     text-align: left;
     width: 43px;
     height: 43px;
+
 }
 
 .sidebar {
@@ -500,7 +502,7 @@ button::-moz-focus-inner,
     min-width: 227px;
     /* min-height: 493px; */
     min-height:100%;
-
+    padding-bottom: 5rem;
     border-left: 1.4px solid #82b4d7;
 }
 

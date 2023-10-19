@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('bills', function (Blueprint $table) {
-            $table->string('DHID', 10);
-            $table->primary('DHID');
+            $table->string('HDID', 10);
+            $table->primary('HDID');
             // $table->date('Ngaytao');
             $table->decimal('PhuThu', 10, 2)->nullable();
             $table->decimal('TongTien', 10,2)->nullable();

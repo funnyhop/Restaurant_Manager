@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DishController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PriceController;
+use App\Http\Controllers\SalesController;
 use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\FoodgrController;
@@ -79,6 +80,8 @@ use App\Http\Controllers\DinnertableController;
     Route::delete('dh_banans/{order_id}/{dinnertb_id}',[DhbananController::class, 'destroy'])->name('dh_banans.destroy');
 //</dh_banan>
 //<sales>
+    Route::get('sales', [SalesController::class, 'index'])->name('sales');
+    Route::post('sales',[SalesController::class,'store'])->name('sales.store');
 //</sales>
 //<order>
     Route::get('orders', [OrderController::class, 'index'])->name('orders');

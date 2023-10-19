@@ -9,17 +9,17 @@
                         <p>Bán hàng</p><span class="float-right badge badge-danger mr-2">Sales</span>
                     </a>
                     <div class="pl-4">
-                        <a href="#" class="nav-link nav-dropdown collapse" id="sales">
+                        <a href="{{ route('sales') }}" class="nav-link nav-dropdown collapse" id="sales">
                             <p>Bán hàng</p>
+                        </a>
+                        <a href="{{ route('customers') }}" class="nav-link nav-dropdown collapse" id="sales">
+                            <p>Khách hàng</p>
                         </a>
                         <a href="{{ route('orders') }}" class="nav-link nav-dropdown collapse" id="sales">
                             <p>Đơn hàng</p>
                         </a>
                         <a href="{{ route('dh_banans') }}" class="nav-link nav-dropdown collapse" id="sales">
                             <p>Đơn hàng của bàn ăn</p>
-                        </a>
-                        <a href="{{ route('customers') }}" class="nav-link nav-dropdown collapse" id="sales">
-                            <p>Khách hàng</p>
                         </a>
                     </div>
                 </li>

@@ -35,7 +35,7 @@ class PriceController extends Controller
      */
     public function create()
     {
-        DB::statement('CALL InsertYearlyDate()');
+        // DB::statement('CALL InsertYearlyDate()');
         $list = DB::table('dishes')->select('MonID', 'TenMon')->get();
         return view('restaurant_manager.createprice', compact('list'));
 
