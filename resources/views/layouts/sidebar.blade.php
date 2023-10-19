@@ -69,10 +69,10 @@
                         <p>Quản lý hóa đơn</p>
                     </a>
                     <div class="pl-4">
-                        <a href="#" class="nav-link nav-dropdown collapse" id="bills">
+                        <a href="{{ route('bills') }}" class="nav-link nav-dropdown collapse" id="bills">
                             <p>Hóa đơn bán</p>
                         </a>
-                        <a href="#" class="nav-link nav-dropdown collapse" id="bills">
+                        <a href="{{ route('revenue') }}" class="nav-link nav-dropdown collapse" id="bills">
                             <p>Doanh thu</p>
                         </a>
                     </div>

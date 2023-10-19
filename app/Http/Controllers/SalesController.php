@@ -14,12 +14,13 @@ use Illuminate\Support\Facades\DB;
 
 class SalesController extends Controller
 {
-    protected $order, $customer, $dish, $staff;
+    protected $order, $customer, $dish, $staff, $bill;
     public function __contruct(){
         $this->order = new Order();
         $this->customer = new Customer();
         $this->dish = new Dish();
         $this->staff = new Staff();
+        $this->bill = new Bill();
     }
     public function index() {
         DB::statement('CALL InsertYearlyDate()');
@@ -102,4 +103,18 @@ class SalesController extends Controller
             }
 
     }
+    ///bill
+    public function billindex(){
+        $key = request()->key;
+        $list_bill = Bill::search($key)->get();
+        $list_gdh = DB::table('ghidhs')->select('order_id', 'dish_id', 'SoLuong')->get();
+        $prices = DB::table('prices')->select('dish_id', 'Gia')->get();
+        $list_dish = Dish::all();
+        $ghidh_order_id = DB::table('ghidhs')->select('order_id')->first();
+        $bill_order_id = DB::table('bills')->select('order_id')->first();
+
+        return view('bills_manager.bill', compact('list_bill', 'list_gdh','prices','list_dish','bill_order_id','ghidh_order_id'));
+    }
+
+
 }

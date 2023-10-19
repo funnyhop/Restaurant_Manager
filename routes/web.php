@@ -10,6 +10,7 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\FoodgrController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\DhbananController;
+use App\Http\Controllers\RevenueController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\DinnertableController;
@@ -82,6 +83,7 @@ use App\Http\Controllers\DinnertableController;
 //<sales>
     Route::get('sales', [SalesController::class, 'index'])->name('sales');
     Route::post('sales',[SalesController::class,'store'])->name('sales.store');
+    Route::get('bills',[SalesController::class,'billindex'])->name('bills');
 //</sales>
 //<order>
     Route::get('orders', [OrderController::class, 'index'])->name('orders');
@@ -109,9 +111,11 @@ use App\Http\Controllers\DinnertableController;
     Route::match(['put','patch'],'signups/{staff_id}/{day_id}/{shift_id}', [SignupController::class, 'update'])->name('signups.update');
     Route::delete('signups/{staff_id}/{day_id}/{shift_id}',[SignupController::class, 'destroy'])->name('signups.destroy');
 //</sign up>
-
 //<reveneu>
+    Route::get('revenue', [RevenueController::class, 'index'])->name('revenue');
 //</reveneu>
+
+
 
 
 
@@ -140,8 +144,5 @@ use App\Http\Controllers\DinnertableController;
 
 
 Route::get('/', function () {
-    return view('restaurant_manager.dishs');
-});
-Route::get('/res', function () {
-    return view('restaurant_manager.createdish');
+    return view('bills_manager.bill');
 });

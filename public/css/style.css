@@ -72,9 +72,7 @@ aside {
     grid-area: side;
     line-height: 24px;
     padding-left: 8px;
-    /* text-align: left; */
     min-height: 100%;
-    /* min-height: 0px; */
 }
 
 footer {
@@ -605,7 +603,7 @@ body,
 .content-wrapper {
     /* background: #D2E8E3; */
     /* min-height: 493px; */
-
+    /* margin-right: 8px; */
     min-height: 100%;
     background: #1273697a;
 }

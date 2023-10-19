@@ -16,7 +16,7 @@ return new class extends Migration
             $table->primary('DonID');
             $table->integer('SoKhach');
             // $table->date('NgayDat');
-            $table->integer('TrangThai')->comment("0:Chưa thanh toán, 1:Đã thanh toán");
+            $table->integer('TrangThai')->comment("0: Đã hủy, 1:Chưa thanh toán, 2:Đã thanh toán");
             $table->string('customer_id', 10);
 
             $table->foreign('customer_id')->references('KHID')->on('customers');
