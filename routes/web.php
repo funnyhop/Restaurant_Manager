@@ -86,7 +86,7 @@ use App\Http\Controllers\DinnertableController;
     Route::post('sales',[SalesController::class,'store'])->name('sales.store');
     Route::get('bills',[SalesController::class,'billindex'])->name('bills');
     Route::get('pay',[SalesController::class,'printbill'])->name('pay');
-    Route::get('pay/{HDID}',[SalesController::class,'billupdate'])->name('pay.update');
+    Route::match(['put', 'patch'],'pay/{HDID}',[SalesController::class,'billupdate'])->name('pay.update');
 //</sales>
 //<order>
     Route::get('orders', [OrderController::class, 'index'])->name('orders');

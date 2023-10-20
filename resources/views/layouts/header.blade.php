@@ -5,7 +5,7 @@
             <a href="/sales" class="brand-link">
                 <img src="{{ asset('images/logo-nha-hang.png') }}" alt="logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="font-weight-light" style="font-family: scandia-web">Nhà hàng Oganic</span>
+                <span class="font-weight-light" style="font-family: scandia-web">Nhà hàng Organic</span>
             </a>
         </ul>
         <ul class="navbar-nav ml-auto">

@@ -115,21 +115,35 @@ class SalesController extends Controller
     }
     ///update bill
     public function printbill(){
-        $bill = Bill::all()->first();
-        $order = Order::all()->first();
-        $customer = Customer::all()->first();
-        $staff = Staff::all()->first();
-        $price = DB::table('price')->select('dish_id', 'Gia')->first();
-        $gdh = DB::table('ghidhs')->select('dish_id', 'order_id', 'SoLuong')->first();
-        return view('bills_manager.printbill', compact('bill', 'order', 'gdh','staff','customer','price'));
+        // $bill = Bill::all()->first();
+        // $order = Order::all()->first();
+        // $customer = Customer::all()->first();
+        // $staff = Staff::all()->first();
+        // $price = DB::table('prices')->select('dish_id', 'Gia')->first();
+        // $gdh = DB::table('ghidhs')->select('dish_id', 'order_id', 'SoLuong')->first();
+
+        $info = DB::table('bills')
+            ->join('staffs', 'bills.staff_id', '=', 'staffs.NVID')
+            ->join('orders', 'bills.order_id', '=', 'orders.DonID')
+            ->join('customers', 'orders.customer_id', '=', 'customers.KHID')
+            ->join('ghidhs', 'orders.DonID', '=', 'ghidhs.order_id')
+            ->join('dishes', 'ghidhs.dish_id', '=', 'dishes.MonID')
+            ->join('prices', 'dishes.MonID', '=', 'prices.dish_id')
+            ->select('orders.DonID','bills.HDID', 'bills.created_at', 'customers.KHID', 'customers.TenKH','customers.SDT',
+                'staffs.NVID', 'staffs.TenNV', 'dishes.TenMon', 'dishes.DVT', 'ghidhs.SoLuong', 'prices.Gia')
+            ->get();
+        return view('bills_manager.printbill', compact('info'));
     }
     public function billupdate(Request $request, $id){
+        // dd($request, $id);
+        $total = $request->input('sum') + $request->input('pt');
+        // dd($total);
         $bill = DB::table('bills')->where('HDID', $id)
             ->update([
                 'PhuThu' => $request->input('pt'),
-                'TongTien' => $request->input('tt'),
+                'TongTien' => $total,
             ]);
-        $order = DB::table('orders')->where('DonID', $request->input('order_id'))
+        $order = DB::table('orders')->where('DonID', $request->input('tt_order'))
             ->update([
                 'TrangThai' => 2,
             ]);
