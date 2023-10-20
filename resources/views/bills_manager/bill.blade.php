@@ -50,6 +50,7 @@
                                         <th>Phụ thu</th>
                                         <th>Trị giá <i>(vnđ)</i></th>
                                         <th>Thanh toán</th>
+                                        <th>Xóa</th>
                                         <th>Tên món</th>
                                         <th>DVT</th>
                                         <th>Số lượng</th>
@@ -70,12 +71,21 @@
                                             <td rowspan="{{ $rowCount + 1 }}">{{ $bill->created_at }}</td>
                                             <td rowspan="{{ $rowCount + 1 }}">{{ $bill->order_id }}</td>
                                             <td rowspan="{{ $rowCount + 1 }}">{{ $bill->staff_id }}</td>
-                                            <td rowspan="{{ $rowCount + 1 }}">{{ $bill->PhuThu }}</td>
+                                            <td rowspan="{{ $rowCount + 1 }}">{{ number_format($bill->PhuThu,2)}}</td>
                                             <td rowspan="{{ $rowCount + 1 }}">
                                                 {{ number_format($bill->TongTien, 2, '.', ',') }}
                                             </td>
                                             <td rowspan="{{ $rowCount + 1 }}">
                                                 <a href="{{ route('pay', ['HDID' => $bill->HDID]) }}"><i class="fa-solid fa-money-bill-1-wave"></i></a>
+                                            </td>
+                                            <td rowspan="{{ $rowCount + 1 }}">
+                                                <form action="{{ route('bills.delete', ['HDID' => $bill->HDID]) }}" method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn-trash">
+                                                        <i class="fa-solid fa-trash "></i>
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                         @foreach ($list_gdh as $gdh)

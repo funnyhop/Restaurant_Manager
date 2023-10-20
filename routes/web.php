@@ -85,6 +85,7 @@ use App\Http\Controllers\DinnertableController;
     Route::get('sales', [SalesController::class, 'index'])->name('sales');
     Route::post('sales',[SalesController::class,'store'])->name('sales.store');
     Route::get('bills',[SalesController::class,'billindex'])->name('bills');
+    Route::delete('bills/{HDID}',[SalesController::class,'billdelete'])->name('bills.delete');
     Route::get('pay',[SalesController::class,'printbill'])->name('pay');
     Route::match(['put', 'patch'],'pay/{HDID}',[SalesController::class,'billupdate'])->name('pay.update');
 //</sales>
@@ -122,6 +123,7 @@ use App\Http\Controllers\DinnertableController;
 //</sign up>
 //<reveneu>
     Route::get('revenue', [RevenueController::class, 'index'])->name('revenue');
+    Route::post('revenue', [RevenueController::class, 'see_revenue'])->name('see_revenue');
 //</reveneu>
 
 

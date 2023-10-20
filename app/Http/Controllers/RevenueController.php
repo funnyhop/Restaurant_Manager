@@ -3,62 +3,68 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 
 class RevenueController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    protected $year;
+    protected $month;
     public function index()
     {
-        return view('revenue');
-    }
+        $years = DB::table('days')
+            ->select(DB::raw('YEAR(Ngay) as year'))
+            ->distinct()
+            ->get();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+        $months = DB::table('days')
+            ->select(DB::raw('MONTH(Ngay) as month'))
+            ->distinct()
+            ->get();
+        $day_revenue = DB::table('bills')
+            ->select(DB::raw('SUM(TongTien) as revenue'))
+            ->whereRaw('DATE(created_at) = CURDATE()')
+            ->first();
+        $month_revenue = DB::table('bills')
+            ->select(DB::raw('SUM(TongTien) as revenue'))
+            ->whereRaw('MONTH(created_at) = MONTH(NOW())')
+            ->first();
+        $year_revenue = DB::table('bills')
+            ->select(DB::raw('SUM(TongTien) as revenue'))
+            ->whereRaw('YEAR(created_at) = YEAR(NOW())')
+            ->first();
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+        return view('bills_manager.revenue', compact('year_revenue','months', 'years', 'day_revenue','month_revenue'));
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function see_revenue(Request $request)
     {
-        //
-    }
+        // dd($request);
+        $this->year = $request->input('nam');
+        $this->month = $request->input('thang');
+        $years = DB::table('days')
+            ->select(DB::raw('YEAR(Ngay) as year'))
+            ->distinct()
+            ->get();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+        $months = DB::table('days')
+            ->select(DB::raw('MONTH(Ngay) as month'))
+            ->distinct()
+            ->get();
+        $day_revenue = DB::table('bills')
+            ->select(DB::raw('SUM(TongTien) as revenue'))
+            ->whereRaw('DATE(created_at) = CURDATE()')
+            ->first();
+        $month_revenue = DB::table('bills')
+            ->select(DB::raw('SUM(TongTien) as revenue'))
+            ->whereRaw('MONTH(created_at) = ?', [$this->month])
+            ->first();
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+        $year_revenue = DB::table('bills')
+            ->select(DB::raw('SUM(TongTien) as revenue'))
+            // ->whereRaw('YEAR(created_at) = ?', [$this->year])
+            ->whereYear('created_at', '=', [$this->year])
+            ->first();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return view('bills_manager.revenue', compact('months', 'years', 'day_revenue', 'month_revenue', 'year_revenue'));
     }
 }

@@ -113,6 +113,11 @@ class SalesController extends Controller
 
         return view('bills_manager.bill', compact('list_bill', 'list_gdh','prices','list_dish'));
     }
+    public function billdelete($id){
+        $bill = DB::table('bills')->where('HDID',$id);
+        $bill->delete();
+        return redirect()->route('bills');
+    }
     ///update bill
     public function printbill(){
         // $bill = Bill::all()->first();
@@ -136,12 +141,12 @@ class SalesController extends Controller
     }
     public function billupdate(Request $request, $id){
         // dd($request, $id);
-        $total = $request->input('sum') + $request->input('pt');
+        // $total = $request->input('sum') + $request->input('pt');
         // dd($total);
         $bill = DB::table('bills')->where('HDID', $id)
             ->update([
                 'PhuThu' => $request->input('pt'),
-                'TongTien' => $total,
+                'TongTien' => $request->input('sum'),
             ]);
         $order = DB::table('orders')->where('DonID', $request->input('tt_order'))
             ->update([
