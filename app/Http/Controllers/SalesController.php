@@ -141,12 +141,12 @@ class SalesController extends Controller
     }
     public function billupdate(Request $request, $id){
         // dd($request, $id);
-        // $total = $request->input('sum') + $request->input('pt');
+        $total = $request->input('sum') + $request->input('pt');
         // dd($total);
         $bill = DB::table('bills')->where('HDID', $id)
             ->update([
                 'PhuThu' => $request->input('pt'),
-                'TongTien' => $request->input('sum'),
+                'TongTien' => $total,
             ]);
         $order = DB::table('orders')->where('DonID', $request->input('tt_order'))
             ->update([

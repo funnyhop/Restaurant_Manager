@@ -64,6 +64,9 @@
                         <a href="{{ route('shifts') }}" class="nav-link nav-dropdown collapse" id="hrm">
                             <p>Ca làm</p>
                         </a>
+                        <a href="{{ route('salaries') }}" class="nav-link nav-dropdown collapse" id="hrm">
+                            <p>Lương</p>
+                        </a>
                     </div>
                 </li>
                 <li class="nav-item">

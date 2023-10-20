@@ -85,4 +85,23 @@ class StaffController extends Controller
         $staff->delete();
         return redirect()->route('staffs');
     }
+    public function staff_salary()
+    {
+        $key = request()->key;
+        $assignments =DB::table('assignments')
+            ->join('staffs','assignments.staff_id','=','staffs.NVID')
+            ->select('day_id','staff_id', 'NVID', 'TenNV')
+            ->where('staff_id', 'LIKE', '%' . $key . '%')
+            ->orWhere('day_id', 'LIKE', '%' . $key . '%')
+            ->orWhere('TenNV', 'LIKE', '%' . $key . '%')
+            ->get();
+        $salary = DB::table('staffs')
+            ->join('signups', 'staffs.NVID','=','signups.staff_id')
+            ->join('shifts', 'signups.shift_id','=','shifts.CaID')
+            ->select( 'CaID', 'Luong', 'signups.staff_id', 'signups.day_id')
+            ->get();
+        // dd($assignments ,$salary);
+        return view('HRM.salary', compact('salary','assignments'));
+    }
+
 }

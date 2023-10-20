@@ -53,7 +53,7 @@
                         </div>
                     </form>
                     <div class="row ml-3 pl-1 pb-3 pt-1">
-                        <div class="card-deck">
+                        <div class="card-deck mx-auto">
                             <div class="card">
                                 <div class="row">
                                     <div class="col-sm-3">

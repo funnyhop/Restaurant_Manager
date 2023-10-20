@@ -32,24 +32,24 @@
                         <div class="col-3"></div>
                         <div class="col-7">
                             <form
-                                action="{{ route('assignments.update', ['staff_id' => $dinnertb->staff_id, 'day_id' => $dinnertb->day_id, 'dinnertb' => $dinnertb->dinnertb_id]) }}"
+                                action="{{ route('assignments.update', ['staff_id' => $assignment->staff_id, 'day_id' => $assignment->day_id, 'dinnertb_id' => $assignment->dinnertb_id]) }}"
                                 method="post">
                                 @csrf
                                 @method('put')
                                 <div class="input-group d-flex pb-2">
                                     <label for="exampleInput1" class="pr-2">Mã nhân viên:</label>
                                     <input type="text" class="input-form pl-2" name="staff_id" id="exampleInput1"
-                                        value="{{ $dinnertb->staff_id }}" placeholder="M0001">
+                                        value="{{ $assignment->staff_id }}" placeholder="M0001">
                                 </div>
                                 <div class="input-group d-flex pb-2">
                                     <label for="exampleInput1" class="pr-2">Mã ca làm:</label>
-                                    <input type="text" class="input-form pl-2" name="dinnertb" id="exampleInput1"
-                                        value="{{ $dinnertb->dinnertb_id }}" placeholder="CS001">
+                                    <input type="text" class="input-form pl-2" name="dinnertb_id" id="exampleInput1"
+                                        value="{{ $assignment->dinnertb_id }}" placeholder="CS001">
                                 </div>
                                 <div class="input-group d-flex pb-2">
                                     <label for="exampleInput2" class="pr-2">Ngày làm:</label>
                                     <input type="text" class="input-form pl-2" name="day_id" id="exampleInput2"
-                                        value="{{ $dinnertb->day_id }}" placeholder="2023-01-01">
+                                        value="{{ $assignment->day_id }}" placeholder="2023-01-01">
                                 </div>
                                 <div class="float-right pr-1 pt-2">
                                     <a href="{{ route('assignments') }}" class="btn btn-secondary">Hủy</a>

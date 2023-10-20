@@ -24,6 +24,9 @@ use App\Http\Controllers\DinnertableController;
     Route::get('staffs/{NVID}', [StaffController::class, 'edit'])->name('staffs.edit');
     Route::match(['put','patch'],'staffs/{NVID}', [StaffController::class, 'update'])->name('staffs.update');
     Route::delete('staffs/{NVID}',[StaffController::class, 'destroy'])->name('staffs.destroy');
+    //<salary>
+        Route::get('/salaries', [StaffController::class, 'staff_salary'])->name('salaries');
+    //</salary>
 //</staff>
 //<shift>
     Route::get('shifts', [ShiftController::class, 'index'])->name('shifts');

@@ -62,9 +62,10 @@ class AssignmentController extends Controller
 
         $assignment = DB::table('assignments')
         ->where('staff_id', $staff_id)
-        ->where('assignment_id', $dinnertb_id)
+        ->where('dinnertb_id', $dinnertb_id)
         ->where('day_id', $day_id)
         ->select('day_id', 'staff_id','dinnertb_id')
+        ->distinct()
         ->first();
 
         return view('HRM.editassignment', compact('assignment'));
