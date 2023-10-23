@@ -12,12 +12,12 @@
             <li class="nav-item dropdown">
                 <!-- Sidebar user panel (optional) -->
                 <div class="d-flex" data-toggle="dropdown">
-                    <a href="#" style="color: #f4f6f9e2">Đăng nhập</a>
+                    <a href="#" style="color: #f4f6f9e2">Wellcome, {{ Auth::user()->TenNV }}</a>
                     <i class="fa-solid fa-user pl-3 pr-3 pt-1" style="color:aliceblue"></i>
                 </div>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <a href="#" class="dropdown-item dropdown-header">Thông tin cá nhân</a>
-                    <a href="#" class="dropdown-item dropdown-header">Đăng xuất</a>
+                    <a href="{{ route('logout') }}" class="dropdown-item dropdown-header">Đăng xuất</a>
                 </div>
             </li>
         </ul>

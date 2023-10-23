@@ -22,10 +22,9 @@ Route::middleware(['web','guest'])->group(function () {
 });
 
 Route::middleware(['web','auth'])->group(function () {
-    Route::get('/', [Login::class, 'sales'])->name('home');
+    Route::get('/', [Login::class, 'home'])->name('home');
     Route::get('/logout', [Login::class, 'logout'])->name('logout');
-});
-//<staff>
+    //<staff>
     Route::get('staffs', [StaffController::class, 'index'])->name('staffs');
     Route::get('staffs/create', [StaffController::class, 'create'])->name('staffs.create');
     Route::post('staffs',[StaffController::class,'store'])->name('staffs.store');
@@ -136,6 +135,8 @@ Route::middleware(['web','auth'])->group(function () {
     Route::get('revenue', [RevenueController::class, 'index'])->name('revenue');
     Route::post('revenue', [RevenueController::class, 'see_revenue'])->name('see_revenue');
 //</reveneu>
+});
+
 
 
 

@@ -75,10 +75,9 @@ class Login extends Controller
     //     }
     // }
 
-    public function sales()
+    public function home()
     {
-        // dd(Auth::user());
-        $user = Auth::user()->TenNV;
-        return view('welcome', ['user' => $user]);
+        return redirect()->route('sales');
     }
+
 }
