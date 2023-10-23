@@ -19,7 +19,9 @@ class User extends Authenticatable
      */
     protected $table = 'staffs';
     protected $primaryKey ='NVID';
+    protected $keyType = 'string';
     protected $fillable = [
+        'NVID',
         'TenNV',
         'email',
         'password',

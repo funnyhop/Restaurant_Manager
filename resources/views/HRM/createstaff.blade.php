@@ -51,24 +51,34 @@
                                                 placeholder="2023-01-01">
                                         </div>
                                         <div class="input-group d-flex pb-2">
-                                            <label for="exampleInput2" class="pr-2">Giới tính</label>
+                                            <label for="exampleInput2" class="pr-2">Giới tính:</label>
                                             <input type="text" class="input-form pl-2" name="gt" id="exampleInput2"
                                                 placeholder="Nam">
+                                        </div>
+                                        <div class="input-group d-flex pb-2">
+                                            <label for="exampleInput2" class="pr-2">Số điện thoại:</label>
+                                            <input type="text" class="input-form pl-2" name="phone" id="exampleInput2"
+                                                placeholder="09837748377">
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group d-flex pb-2">
-                                            <label for="exampleInput2" class="pr-2">Số điện thoại</label>
-                                            <input type="text" class="input-form pl-2" name="phone" id="exampleInput2"
-                                                placeholder="09837748377">
+                                            <label for="exampleInput2" class="pr-2">Email:</label>
+                                            <input type="text" class="input-form pl-2" name="email" id="exampleInput2"
+                                                placeholder="email">
                                         </div>
                                         <div class="input-group d-flex pb-2">
-                                            <label for="exampleInput2" class="pr-2">Địa chỉ</label>
+                                            <label for="exampleInput2" class="pr-2">Password:</label>
+                                            <input type="text" class="input-form pl-2" name="password" id="exampleInput2"
+                                                placeholder="12345678">
+                                        </div>
+                                        <div class="input-group d-flex pb-2">
+                                            <label for="exampleInput2" class="pr-2">Địa chỉ:</label>
                                             <input type="text" class="input-form pl-2" name="address" id="exampleInput2"
                                                 placeholder="An Bình, Cái Răng, Cần Thơ, Việt Nam">
                                         </div>
                                         <div class="input-group d-flex pb-2">
-                                            <label for="exampleInput2" class="pr-2">Chức vụ</label>
+                                            <label for="exampleInput2" class="pr-2">Chức vụ:</label>
                                             <input type="text" class="input-form pl-2" name="cv" id="exampleInput2"
                                                 placeholder="Nhân viên">
                                         </div>

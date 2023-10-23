@@ -41,6 +41,9 @@ class Login extends Controller
                 $user = Auth::user();
                 // dd($user);
                 Auth::login($user); // Manually log in the user
+                $request->session()->put('NVID', $user->NVID);
+                // $a = $request->session()->get('NVID');
+                // dd($a);
                 return redirect()->route('home');
                 // return $next($request)->route('home');
                 // if (Auth::check()) {
@@ -75,9 +78,11 @@ class Login extends Controller
     //     }
     // }
 
-    public function home()
+    public function home(Request $request)
     {
-        return redirect()->route('sales');
+        $NVID = $request->session()->get('NVID');
+        return redirect()->route('sales', ['NVID' => $NVID]);
     }
+
 
 }

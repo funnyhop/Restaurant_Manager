@@ -26,7 +26,7 @@
                     <div class="float-right d-inline-flex pr-2">
                         <li class="pr-1"><a href="{{ route('staffs') }}">Danh sách</a></li>
                         <a href="#">/</a>
-                        <li class="pl-1"><a href="#">Thêm</a></li>
+                        <li class="pl-1"><a href="{{ route('staffs.create') }}">Thêm</a></li>
                     </div>
                     <div class="row pt-3 pl-4 d-flex pb-4">
                         <div class="col-2"></div>
@@ -56,12 +56,22 @@
                                             <input type="text" class="input-form pl-2" name="gt" id="exampleInput2"
                                                 value="{{ $staff->GT }}" placeholder="Nam">
                                         </div>
-                                    </div>
-                                    <div class="col-6">
                                         <div class="input-group d-flex pb-2">
                                             <label for="exampleInput2" class="pr-2">Số điện thoại</label>
                                             <input type="text" class="input-form pl-2" name="phone" id="exampleInput2"
                                                 value="{{ $staff->SDT }}" placeholder="09837748377">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="input-group d-flex pb-2">
+                                            <label for="exampleInput2" class="pr-2">Email:</label>
+                                            <input type="text" class="input-form pl-2" name="email" id="exampleInput2"
+                                            value="{{ $staff->email }}"    placeholder="email">
+                                        </div>
+                                        <div class="input-group d-flex pb-2">
+                                            <label for="exampleInput2" class="pr-2">Password:</label>
+                                            <input type="text" class="input-form pl-2" name="password" id="exampleInput2"
+                                            value="{{ $staff->password }}"   placeholder="12345678">
                                         </div>
                                         <div class="input-group d-flex pb-2">
                                             <label for="exampleInput2" class="pr-2">Địa chỉ</label>

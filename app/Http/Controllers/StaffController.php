@@ -35,6 +35,7 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->input('email'));
         $staff = Staff::create([
             'NVID' => $request->input('id'),
             'TenNV' => $request->input('name'),
@@ -42,9 +43,11 @@ class StaffController extends Controller
             'GT' => $request->input('gt'),
             'SDT' => $request->input('phone'),
             'DiaChi' => $request->input('address'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
             'ChucVu' => $request->input('cv'),
-            // 'MatKhau' => $request->input('cv')
         ]);
+
         $staff->save();
         return redirect()->route('staffs')->with('success','Thêm nhân viên thành công!');
     }
@@ -54,7 +57,7 @@ class StaffController extends Controller
      */
     public function edit(string $id)
     {
-        $staff = DB::table('staffs')->select('TenNV', 'NVID', 'GT', 'DiaChi', 'SDT', 'NgaySinh', 'MatKhau','ChucVu')->where('NVID', $id)->first();
+        $staff = DB::table('staffs')->select('TenNV', 'NVID', 'GT', 'DiaChi', 'SDT', 'NgaySinh', 'email','password','ChucVu')->where('NVID', $id)->first();
         return view('HRM.editstaff', compact('staff'));
     }
 
@@ -71,7 +74,9 @@ class StaffController extends Controller
                 'GT' => $request->input('gt'),
                 'SDT' => $request->input('phone'),
                 'DiaChi' => $request->input('address'),
-                'ChucVu' => $request->input('cv')
+                'email' => $request->input('email'),
+                'password' => bcrypt($request->input('password')),
+                'ChucVu' => $request->input('cv'),
             ]);
         return redirect()->route('staffs');
     }

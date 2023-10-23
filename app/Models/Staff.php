@@ -11,11 +11,11 @@ class Staff extends Model
     use HasFactory;
     protected $table='staffs';
     protected $primaryKey = 'NVID';
-    protected $fillable = ['TenNV', 'NVID', 'GT', 'DiaChi', 'SDT', 'NgaySinh', 'MatKhau','ChucVu'];
+    protected $fillable = ['TenNV', 'NVID', 'GT', 'DiaChi', 'SDT', 'NgaySinh', 'email', 'password','ChucVu'];
     protected $keyType = 'string';
 
     public function staffs(){
-        $staffs = DB::table('staffs')->select('TenNV', 'NVID', 'GT', 'DiaChi', 'SDT', 'NgaySinh', 'MatKhau','ChucVu')->get();
+        $staffs = DB::table('staffs')->select('TenNV', 'NVID', 'GT', 'DiaChi', 'SDT', 'NgaySinh', 'email', 'password','ChucVu')->get();
         return $staffs;
     }
     public function scopeSearch($query, $key){

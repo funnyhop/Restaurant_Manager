@@ -24,16 +24,19 @@ Route::middleware(['web','guest'])->group(function () {
 Route::middleware(['web','auth'])->group(function () {
     Route::get('/', [Login::class, 'home'])->name('home');
     Route::get('/logout', [Login::class, 'logout'])->name('logout');
-    //<staff>
+
+});
+
+//<staff>
     Route::get('staffs', [StaffController::class, 'index'])->name('staffs');
     Route::get('staffs/create', [StaffController::class, 'create'])->name('staffs.create');
     Route::post('staffs',[StaffController::class,'store'])->name('staffs.store');
     Route::get('staffs/{NVID}', [StaffController::class, 'edit'])->name('staffs.edit');
     Route::match(['put','patch'],'staffs/{NVID}', [StaffController::class, 'update'])->name('staffs.update');
     Route::delete('staffs/{NVID}',[StaffController::class, 'destroy'])->name('staffs.destroy');
-    //<salary>
-        Route::get('/salaries', [StaffController::class, 'staff_salary'])->name('salaries');
-    //</salary>
+//<salary>
+    Route::get('/salaries', [StaffController::class, 'staff_salary'])->name('salaries');
+//</salary>
 //</staff>
 //<shift>
     Route::get('shifts', [ShiftController::class, 'index'])->name('shifts');
@@ -135,9 +138,6 @@ Route::middleware(['web','auth'])->group(function () {
     Route::get('revenue', [RevenueController::class, 'index'])->name('revenue');
     Route::post('revenue', [RevenueController::class, 'see_revenue'])->name('see_revenue');
 //</reveneu>
-});
-
-
 
 
 
