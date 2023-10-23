@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Login;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DishController;
 use App\Http\Controllers\GhidhController;
@@ -16,7 +17,14 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\DinnertableController;
 
+Route::middleware(['web','guest'])->group(function () {
+    Route::match(['get', 'post'], 'login', [Login::class, 'index'])->name('login');
+});
 
+Route::middleware(['web','auth'])->group(function () {
+    Route::get('/', [Login::class, 'sales'])->name('home');
+    Route::get('/logout', [Login::class, 'logout'])->name('logout');
+});
 //<staff>
     Route::get('staffs', [StaffController::class, 'index'])->name('staffs');
     Route::get('staffs/create', [StaffController::class, 'create'])->name('staffs.create');
@@ -157,6 +165,6 @@ use App\Http\Controllers\DinnertableController;
 
 
 
-Route::get('/', function () {
-    return view('bills_manager.bill');
-});
+// Route::get('/', function () {
+//     return view('bills_manager.bill');
+// });
