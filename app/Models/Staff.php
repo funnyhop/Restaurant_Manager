@@ -15,7 +15,7 @@ class Staff extends Model
     protected $keyType = 'string';
 
     public function staffs(){
-        $staffs = DB::table('staffs')->select('TenNV', 'NVID', 'GT', 'DiaChi', 'SDT', 'NgaySinh', 'email', 'password','ChucVu')->get();
+        $staffs = DB::table('staffs')->select('TenNV', 'NVID', 'GT', 'DiaChi', 'SDT', 'NgaySinh', 'email', 'password','ChucVu', 'role_id')->get();
         return $staffs;
     }
     public function scopeSearch($query, $key){

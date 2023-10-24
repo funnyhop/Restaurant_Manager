@@ -34,7 +34,7 @@
                             <form action="{{ route('staffs.update', ['NVID' => $staff->NVID]) }}" method="post">
                                 @csrf
                                 @method('put')
-                                <div class="row">
+                                <div class="row pb-4">
                                     <div class="col-6">
                                         <div class="input-group d-flex pb-2">
                                             <label for="exampleInput1" class="pr-2">Mã nhân viên:</label>
@@ -66,29 +66,30 @@
                                         <div class="input-group d-flex pb-2">
                                             <label for="exampleInput2" class="pr-2">Email:</label>
                                             <input type="text" class="input-form pl-2" name="email" id="exampleInput2"
-                                            value="{{ $staff->email }}"    placeholder="email">
+                                                value="{{ $staff->email }}" placeholder="email">
                                         </div>
                                         <div class="input-group d-flex pb-2">
                                             <label for="exampleInput2" class="pr-2">Password:</label>
                                             <input type="text" class="input-form pl-2" name="password" id="exampleInput2"
-                                            value="{{ $staff->password }}"   placeholder="12345678">
+                                                value="{{ $staff->password }}" placeholder="12345678">
                                         </div>
                                         <div class="input-group d-flex pb-2">
                                             <label for="exampleInput2" class="pr-2">Địa chỉ</label>
                                             <input type="text" class="input-form pl-2" name="address" id="exampleInput2"
-                                                value="{{ $staff->DiaChi }}" placeholder="An Bình, Cái Răng, Cần Thơ, Việt Nam">
+                                                value="{{ $staff->DiaChi }}"
+                                                placeholder="An Bình, Cái Răng, Cần Thơ, Việt Nam">
                                         </div>
                                         <div class="input-group d-flex pb-2">
                                             <label for="exampleInput2" class="pr-2">Chức vụ</label>
-                                            <input type="text" class="input-form pl-2" name="cv" id="exampleInput2"
-                                                value="{{ $staff->ChucVu }}" placeholder="Nhân viên">
+                                            <input type="text" class="input-form pl-2" name="cv"
+                                                id="exampleInput2" value="{{ $staff->ChucVu }}" placeholder="Nhân viên">
                                         </div>
-                                        {{-- <div class="input-group d-flex pb-2">
-                                            <label for="exampleInput2" class="pr-2">Mật khẩu</label>
-                                            <input type="text" class="input-form pl-2" name="password" id="exampleInput2"
-                                             value="{{ $staff->MatKhau }}"    placeholder="123">
-                                        </div> --}}
-                                        <div class="float-right pr-1 pt-2 mt-4">
+                                        <div class="input-group d-flex pb-2">
+                                            <label for="exampleInput2" class="pr-2">Role</label>
+                                            <input type="text" class="input-form pl-2" name="role_id"
+                                                id="exampleInput2" value="{{ $staff->role_id }}" placeholder="1|2|3">
+                                        </div>
+                                        <div class="float-right pt-2 mt-1">
                                             <a href="{{ route('staffs') }}" class="btn btn-secondary">Hủy</a>
                                             <button type="submit" class="btn btn-primary">Thêm</button>
                                         </div>

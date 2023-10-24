@@ -33,7 +33,7 @@
                         <div class="col-9">
                             <form action="{{ route('staffs.store') }}" method="post">
                                 @csrf
-                                <div class="row">
+                                <div class="row pb-4">
                                     <div class="col-6">
                                         <div class="input-group d-flex pb-2">
                                             <label for="exampleInput1" class="pr-2">Mã nhân viên:</label>
@@ -82,12 +82,12 @@
                                             <input type="text" class="input-form pl-2" name="cv" id="exampleInput2"
                                                 placeholder="Nhân viên">
                                         </div>
-                                        {{-- <div class="input-group d-flex pb-2">
-                                            <label for="exampleInput2" class="pr-2">Mật khẩu</label>
-                                            <input type="text" class="input-form pl-2" name="password" id="exampleInput2"
-                                                placeholder="123">
-                                        </div> --}}
-                                        <div class="float-right pr-1 pt-2 mt-4">
+                                        <div class="input-group d-flex pb-2">
+                                            <label for="exampleInput2" class="pr-2">Role</label>
+                                            <input type="text" class="input-form pl-2" name="role_id" id="exampleInput2"
+                                                placeholder="1|2|3">
+                                        </div>
+                                        <div class="float-right pt-2 mt-1">
                                             <button type="reset" class="btn btn-secondary">Hủy</button>
                                             <button type="submit" class="btn btn-primary">Thêm</button>
                                         </div>

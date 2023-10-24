@@ -46,6 +46,7 @@ class StaffController extends Controller
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
             'ChucVu' => $request->input('cv'),
+            'role_id' => $request->input('role_id'),
         ]);
 
         $staff->save();
@@ -57,7 +58,7 @@ class StaffController extends Controller
      */
     public function edit(string $id)
     {
-        $staff = DB::table('staffs')->select('TenNV', 'NVID', 'GT', 'DiaChi', 'SDT', 'NgaySinh', 'email','password','ChucVu')->where('NVID', $id)->first();
+        $staff = DB::table('staffs')->select('TenNV', 'NVID', 'GT', 'DiaChi', 'SDT', 'NgaySinh', 'email','password','ChucVu','role_id')->where('NVID', $id)->first();
         return view('HRM.editstaff', compact('staff'));
     }
 
@@ -77,6 +78,7 @@ class StaffController extends Controller
                 'email' => $request->input('email'),
                 'password' => bcrypt($request->input('password')),
                 'ChucVu' => $request->input('cv'),
+                'role_id' => $request->input('role_id'),
             ]);
         return redirect()->route('staffs');
     }
