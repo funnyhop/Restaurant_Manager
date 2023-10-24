@@ -11,7 +11,7 @@ class Staff extends Model
     use HasFactory;
     protected $table='staffs';
     protected $primaryKey = 'NVID';
-    protected $fillable = ['TenNV', 'NVID', 'GT', 'DiaChi', 'SDT', 'NgaySinh', 'email', 'password','ChucVu'];
+    protected $fillable = ['TenNV', 'NVID', 'GT', 'DiaChi', 'SDT', 'NgaySinh', 'email', 'password','ChucVu','role_id'];
     protected $keyType = 'string';
 
     public function staffs(){

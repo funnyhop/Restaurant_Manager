@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\View;
 
 class Login extends Controller
 {
@@ -63,6 +64,32 @@ class Login extends Controller
 
         return redirect()->route('login');
     }
+    public function show()
+    {
+        $user = Auth::user();
+        // dd($user);
+        return view('profile', compact('user'));
+    }
+    public function edit($id) {
+        $user = DB::table('staffs')->where('NVID', $id)->first();
+        return view('editprofile', ['user' => $user]);
+    }
+
+    public function update(Request $request, $id){
+        $staff = DB::table('staffs')->where('NVID', $id)
+            ->update([
+                'NVID' => $request->input('id'),
+                'TenNV' => $request->input('name'),
+                'NgaySinh' => $request->input('ns'),
+                'GT' => $request->input('gt'),
+                'SDT' => $request->input('phone'),
+                'DiaChi' => $request->input('address'),
+                'email' => $request->input('email'),
+                'password' => bcrypt($request->input('password')),
+            ]);
+        return redirect('/profile');
+    }
+
     // public function postauthlogin(Request $request)
     // {
     //     $arr = [

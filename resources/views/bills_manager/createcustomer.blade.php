@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    <title>Món ăn</title>
+    <title>Thêm khách hàng</title>
 @endsection
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -11,24 +11,10 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h4 class="ml-3 text-dark" style="font-family: scandia-web">Món ăn</h4>
+                            <h4 class="ml-3 text-dark" style="font-family: scandia-web">Thêm khách hàng</h4>
                         </div>
                         <!-- /.col -->
                         <div class="col-sm-6">
-                            <!-- SEARCH FORM -->
-                            <form class="form-inline ml-3 float-right">
-                                <div class="input-group input-group-sm">
-                                    <input class="form-control form-control-navbar" type="search" name="key"
-                                        placeholder="Search" aria-label="Search">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-navbar" type="submit"
-                                            style="background-color: #e0f8f1;
-                                border-color: silver;">
-                                            <i class="fas fa-search"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->

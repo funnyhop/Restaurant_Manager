@@ -24,7 +24,9 @@ Route::middleware(['web','guest'])->group(function () {
 Route::middleware(['web','auth'])->group(function () {
     Route::get('/', [Login::class, 'home'])->name('home');
     Route::get('/logout', [Login::class, 'logout'])->name('logout');
-
+    Route::get('/profile', [Login::class, 'show'])->name('profile');
+    Route::get('profile/{NVID}', [Login::class, 'edit'])->name('profile.edit');
+    Route::match(['put','patch'], 'profile/{NVID}', [Login::class, 'update'])->name('profile.update');
 
 
 //<staff> ->middleware('permission.checker:admin|cashier|staff');
@@ -79,7 +81,7 @@ Route::middleware(['web','auth'])->group(function () {
     Route::delete('prices/{dish_id}/{day_id}',[PriceController::class, 'destroy'])->name('prices.destroy')->middleware('permission.checker:admin');
 //</price>
 //<dinner table>
-    Route::get('dinnertbs', [DinnertableController::class, 'index'])->name('dinnertbs')->middleware('permission.checker:admin|cashier');
+    Route::get('dinnertbs', [DinnertableController::class, 'index'])->name('dinnertbs')->middleware('permission.checker:admin|cashier|staff');
     Route::get('dinnertbs/create', [DinnertableController::class, 'create'])->name('dinnertbs.create')->middleware('permission.checker:admin|cashier');
     Route::post('dinnertbs',[DinnertableController::class,'store'])->name('dinnertbs.store')->middleware('permission.checker:admin|cashier');
     Route::get('dinnertbs/{BanID}', [DinnertableController::class, 'edit'])->name('dinnertbs.edit')->middleware('permission.checker:admin|cashier');

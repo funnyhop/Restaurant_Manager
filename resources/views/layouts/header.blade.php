@@ -16,7 +16,7 @@
                     <i class="fa-solid fa-user pl-3 pr-3 pt-1" style="color:aliceblue"></i>
                 </div>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <a href="#" class="dropdown-item dropdown-header">Thông tin cá nhân</a>
+                    <a href="{{ route('profile') }}" class="dropdown-item dropdown-header">Thông tin cá nhân</a>
                     <a href="{{ route('logout') }}" class="dropdown-item dropdown-header">Đăng xuất</a>
                 </div>
             </li>

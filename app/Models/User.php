@@ -21,10 +21,16 @@ class User extends Authenticatable
     protected $primaryKey ='NVID';
     protected $keyType = 'string';
     protected $fillable = [
-        'NVID',
         'TenNV',
+        'NVID',
+        'GT',
+        'DiaChi',
+        'SDT',
+        'NgaySinh',
         'email',
         'password',
+        'ChucVu',
+        'role_id',
     ];
 
     /**
