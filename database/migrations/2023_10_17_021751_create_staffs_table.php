@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('ChucVu', 50);
             $table->string('SDT', 10);
             $table->string('email');
-            $table->String('password')->nullable();
+            $table->string('password');
+            $table->tinyInteger('role_id')->comment("1: admin, 2: Thu ngân, 3: Nhân viên");
             $table->timestamps();
         });
     }

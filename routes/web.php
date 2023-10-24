@@ -25,10 +25,10 @@ Route::middleware(['web','auth'])->group(function () {
     Route::get('/', [Login::class, 'home'])->name('home');
     Route::get('/logout', [Login::class, 'logout'])->name('logout');
 
-});
+
 
 //<staff>
-    Route::get('staffs', [StaffController::class, 'index'])->name('staffs');
+    Route::get('staffs', [StaffController::class, 'index'])->name('staffs')->middleware('permission.checker:admin|cashier|staff');
     Route::get('staffs/create', [StaffController::class, 'create'])->name('staffs.create');
     Route::post('staffs',[StaffController::class,'store'])->name('staffs.store');
     Route::get('staffs/{NVID}', [StaffController::class, 'edit'])->name('staffs.edit');
@@ -137,9 +137,12 @@ Route::middleware(['web','auth'])->group(function () {
 //<reveneu>
     Route::get('revenue', [RevenueController::class, 'index'])->name('revenue');
     Route::post('revenue', [RevenueController::class, 'see_revenue'])->name('see_revenue');
+    //<403>
+        Route::get('403', [RevenueController::class, 'index403'])->name('403');
+    //</403>
 //</reveneu>
 
-
+});
 
 
 

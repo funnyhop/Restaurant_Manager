@@ -46,4 +46,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function getStrRole(){
+       $permissionMapping = array_flip(config('permisstion'));
+       return $permissionMapping[$this->role_id];
+    }
+
 }

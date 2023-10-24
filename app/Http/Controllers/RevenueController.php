@@ -67,4 +67,7 @@ class RevenueController extends Controller
 
         return view('bills_manager.revenue', compact('months', 'years', 'day_revenue', 'month_revenue', 'year_revenue'));
     }
+    public function index403(){
+        return view('403');
+    }
 }
