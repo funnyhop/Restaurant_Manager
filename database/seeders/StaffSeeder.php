@@ -15,10 +15,10 @@ class StaffSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            'NVID' => 'NV000',
+            'NVID' => 'A0000',
             'email' => 'hop@gmail.com',
             'password' => bcrypt('123'),
-            'Chucvu' => 'NV',
+            'Chucvu' => 'Chủ nhà hàng',
             'TenNV' => 'Dinh Thai Hop',
             'NgaySinh' => '2023-01-01',
             'GT' => 'Nam',
