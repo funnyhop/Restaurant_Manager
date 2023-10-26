@@ -33,7 +33,7 @@
                     </a>
                     <div class="pl-4">
                         <a href="{{ route('dishes') }}" class="nav-link nav-dropdown collapse" id="restaurant">
-                            <p>Thêm món ăn</p>
+                            <p>Món ăn</p>
                         </a>
                         <a href="{{ route('dinnertbs') }}" class="nav-link nav-dropdown collapse" id="restaurant">
                             <p>Bàn ăn</p>
