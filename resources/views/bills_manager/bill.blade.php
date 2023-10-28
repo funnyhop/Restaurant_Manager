@@ -50,6 +50,7 @@
                                         <th>Phụ thu</th>
                                         <th>Trị giá <i>(vnđ)</i></th>
                                         <th>Thanh toán</th>
+                                        <th>Sửa</th>
                                         <th>Xóa</th>
                                         <th>Tên món</th>
                                         <th>DVT</th>
@@ -77,6 +78,9 @@
                                             </td>
                                             <td rowspan="{{ $rowCount + 1 }}">
                                                 <a href="{{ route('pay', ['HDID' => $bill->HDID]) }}"><i class="fa-solid fa-money-bill-1-wave"></i></a>
+                                            </td>
+                                            <td rowspan="{{ $rowCount + 1 }}">
+                                                <a href="{{ route('bills.edit', ['HDID' => $bill->HDID]) }}"><i class="fa-solid fa-pen-to-square"></i></a>
                                             </td>
                                             <td rowspan="{{ $rowCount + 1 }}">
                                                 <form action="{{ route('bills.delete', ['HDID' => $bill->HDID]) }}" method="post">

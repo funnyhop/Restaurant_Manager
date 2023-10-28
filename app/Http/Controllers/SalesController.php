@@ -113,6 +113,25 @@ class SalesController extends Controller
 
         return view('bills_manager.bill', compact('list_bill', 'list_gdh','prices','list_dish'));
     }
+
+    public function edit($HDID){
+        $bill = DB::table('bills')->where('HDID',$HDID)
+        ->select('HDID','created_at','order_id','PhuThu','staff_id')->first();
+        return view('bills_manager.editbill',compact('bill'));
+    }
+
+    public function update(Request $request, $HDID){
+        $bill = DB::table('bills')->where('HDID',$HDID)
+        ->update([
+            'HDID'=>$request->HDID,
+            'created_at'=>$request->created_at,
+            'PhuThu'=>$request->PhuThu,
+            'order_id'=>$request->order_id,
+            'staff_id'=>$request->staff_id,
+        ]);
+        return redirect()->route('bills');
+    }
+
     public function billdelete($id){
         $bill = DB::table('bills')->where('HDID',$id);
         $bill->delete();

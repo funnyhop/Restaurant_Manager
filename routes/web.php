@@ -99,8 +99,12 @@ Route::middleware(['web','auth'])->group(function () {
 //<sales>
     Route::get('sales', [SalesController::class, 'index'])->name('sales')->middleware('permission.checker:admin|cashier|staff');
     Route::post('sales',[SalesController::class,'store'])->name('sales.store')->middleware('permission.checker:admin|cashier|staff');
+
     Route::get('bills',[SalesController::class,'billindex'])->name('bills')->middleware('permission.checker:admin|cashier|staff');
+    Route::get('bills/{HDID}',[SalesController::class,'edit'])->name('bills.edit')->middleware('permission.checker:admin|cashier');
+    Route::match(['put', 'patch'], 'bills/{HDID}',[SalesController::class,'update'])->name('bills.update')->middleware('permission.checker:admin|cashier');
     Route::delete('bills/{HDID}',[SalesController::class,'billdelete'])->name('bills.delete')->middleware('permission.checker:admin');
+
     Route::get('pay',[SalesController::class,'printbill'])->name('pay')->middleware('permission.checker:admin|cashier');
     Route::match(['put', 'patch'],'pay/{HDID}',[SalesController::class,'billupdate'])->name('pay.update')->middleware('permission.checker:admin|cashier');
 //</sales>
