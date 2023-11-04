@@ -51,6 +51,16 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+    public function show($id)
+    {
+        $ghidh = DB::table('ghidhs')
+        ->join('dishes','ghidhs.dish_id','=','dishes.MonID')
+        ->select('order_id', 'dishes.TenMon', 'Soluong')
+        ->where('order_id', $id)
+        ->get();
+        // dd($ghidh);
+        return view('bills_manager.showghidh', compact('ghidh'));
+    }
     public function edit($id)
     {
         $order = DB::table('orders')->select('DonID', 'SoKhach', 'customer_id', 'TrangThai')->where('DonID', $id)->first();

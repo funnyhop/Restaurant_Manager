@@ -53,7 +53,7 @@
                                         <th>Số khách</th>
                                         <th>Ngày đặt</th>
                                         <th>Trạng thái</th>
-                                        <th>Cập nhật</th>
+                                        <th>Chi tiết</th>
                                         <th>Xóa</th>
                                     </tr>
                                 </thead>
@@ -65,9 +65,11 @@
                                             <td>{{ $order->SoKhach }}</td>
                                             <td>{{ $order->created_at }}</td>
                                             <td>{{ $order->TrangThai }}</td>
-                                            <td><a href="{{ route('orders.edit', ['DonID' => $order->DonID]) }}"><i
-                                                        class="fa-solid fa-pen-to-square"></i></a></td>
+                                            <td><a href="{{ route('orders.show', ['DonID' => $order->DonID]) }}"><i class="fa-solid fa-circle-info"></i></a></td>
                                             <td>
+                                            {{-- <td><a href="{{ route('orders.edit', ['DonID' => $order->DonID]) }}"><i
+                                                        class="fa-solid fa-pen-to-square"></i></a></td>
+                                            <td> --}}
                                                 <form action="{{ route('orders.edit', ['DonID' => $order->DonID]) }}" method="post">
                                                     @csrf
                                                     @method('delete')

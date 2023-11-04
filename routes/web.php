@@ -112,6 +112,7 @@ Route::middleware(['web','auth'])->group(function () {
     Route::get('orders', [OrderController::class, 'index'])->name('orders')->middleware('permission.checker:admin|cashier|staff');
     Route::get('orders/create', [OrderController::class, 'create'])->name('orders.create')->middleware('permission.checker:admin|cashier|staff');
     Route::post('orders',[OrderController::class,'store'])->name('orders.store')->middleware('permission.checker:admin|cashier|staff');
+    Route::get('orders/{DonID}/show',[OrderController::class,'show'])->name('orders.show')->middleware('permission.checker:admin|cashier|staff');
     Route::get('orders/{DonID}', [OrderController::class, 'edit'])->name('orders.edit')->middleware('permission.checker:admin|cashier|staff');
     Route::match(['put','patch'],'orders/{DonID}', [OrderController::class, 'update'])->name('orders.update')->middleware('permission.checker:admin|cashier|staff');
     Route::delete('orders/{DonID}',[OrderController::class, 'destroy'])->name('orders.destroy')->middleware('permission.checker:admin|cashier|staff');
