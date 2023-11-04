@@ -70,7 +70,7 @@
                                         </div>
                                         <div class="input-group d-flex pb-2">
                                             <label for="exampleInput2" class="pr-2">Password:</label>
-                                            <input type="text" class="input-form pl-2" name="password" id="exampleInput2"
+                                            <input type="password" class="input-form pl-2" name="password" id="exampleInput2"
                                                 value="{{ $staff->password }}" placeholder="12345678">
                                         </div>
                                         <div class="input-group d-flex pb-2">

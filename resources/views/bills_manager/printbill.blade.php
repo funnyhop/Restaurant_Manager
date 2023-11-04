@@ -29,7 +29,7 @@
                     <div class="row pt-1 pl-4 d-flex mb-3 pb-5 ">
                         {{-- <div class="col-1"></div> --}}
                         <div class="col-4 mx-auto" >
-                            <form style="background-color: #e0f8f1" action="{{ route('pay.update', ['HDID' => $info->first()->HDID]) }}" method="post">
+                            <form style="background-color: #e0f8f1" action="{{ route('pay.update', ['HDID' => $bill->HDID]) }}" method="post">
                                 @csrf
                                 @method('PUT')
                                 <div class="d-block pt-3 mb-2 text-lg-center">
@@ -40,10 +40,10 @@
                                 <div class="d-block text-lg-center">
                                     <div><b>HOÁ ĐƠN</b></div>
                                     <div >
-                                        <p class="m-0">Mã hóa đơn: {{ $info->first()->HDID }}</p>
+                                        <p class="m-0">Mã hóa đơn: {{ $bill->HDID }}</p>
                                     </div>
                                     <div >
-                                        <p class="m-0">Ngày: {{ $info->first()->created_at }}
+                                        <p class="m-0">Ngày: {{ $bill->created_at }}
                                         </p>
                                     </div>
                                     <div >
@@ -95,7 +95,7 @@
                                                 </td>
                                             </tr>
                                             <input type="hidden" name="sum" value="{{ $sum}}">
-                                            <input type="hidden" name="tt_order" value="{{ $info->first()->DonID }}">
+                                            <input type="hidden" name="tt_order" value="{{ $bill->order_id }}">
                                         </tbody>
                                     </table>
                                 </div>

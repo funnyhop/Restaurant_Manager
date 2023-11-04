@@ -105,7 +105,7 @@ Route::middleware(['web','auth'])->group(function () {
     Route::match(['put', 'patch'], 'bills/{HDID}',[SalesController::class,'update'])->name('bills.update')->middleware('permission.checker:admin|cashier');
     Route::delete('bills/{HDID}',[SalesController::class,'billdelete'])->name('bills.delete')->middleware('permission.checker:admin');
 
-    Route::get('pay',[SalesController::class,'printbill'])->name('pay')->middleware('permission.checker:admin|cashier');
+    Route::get('pay/{HDID}',[SalesController::class,'printbill'])->name('pay')->middleware('permission.checker:admin|cashier');
     Route::match(['put', 'patch'],'pay/{HDID}',[SalesController::class,'billupdate'])->name('pay.update')->middleware('permission.checker:admin|cashier');
 //</sales>
 //<order>

@@ -138,7 +138,7 @@ class SalesController extends Controller
         return redirect()->route('bills');
     }
     ///update bill
-    public function printbill(){
+    public function printbill($HDID){
         // $bill = Bill::all()->first();
         // $order = Order::all()->first();
         // $customer = Customer::all()->first();
@@ -154,9 +154,11 @@ class SalesController extends Controller
             ->join('dishes', 'ghidhs.dish_id', '=', 'dishes.MonID')
             ->join('prices', 'dishes.MonID', '=', 'prices.dish_id')
             ->select('orders.DonID','bills.HDID', 'bills.created_at', 'customers.KHID', 'customers.TenKH','customers.SDT',
-                'staffs.NVID', 'staffs.TenNV', 'dishes.TenMon', 'dishes.DVT', 'ghidhs.SoLuong', 'prices.Gia')
+                'staffs.NVID', 'staffs.TenNV', 'dishes.TenMon', 'dishes.DVT', 'ghidhs.SoLuong', 'prices.Gia', 'bills.PhuThu')
             ->get();
-        return view('bills_manager.printbill', compact('info'));
+        $bill = DB::table('bills')->where('HDID',$HDID)
+            ->select('HDID','created_at','order_id','PhuThu','staff_id')->first();
+        return view('bills_manager.printbill', compact('info', 'bill'));
     }
     public function billupdate(Request $request, $id){
         // dd($request, $id);
