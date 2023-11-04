@@ -100,6 +100,10 @@ Route::middleware(['web','auth'])->group(function () {
     Route::get('sales', [SalesController::class, 'index'])->name('sales')->middleware('permission.checker:admin|cashier|staff');
     Route::post('sales',[SalesController::class,'store'])->name('sales.store')->middleware('permission.checker:admin|cashier|staff');
 
+    Route::get('create_bill/{DonID}',[SalesController::class,'create_bill'])->name('create_bill')->middleware('permission.checker:admin|cashier');
+    Route::post('create_bill',[SalesController::class,'createbill'])->name('createbill')->middleware('permission.checker:admin|cashier');
+    Route::match(['put', 'get'],'bill_huy/{DonID}',[SalesController::class,'bill_huy'])->name('bill_huy')->middleware('permission.checker:admin|cashier');
+
     Route::get('bills',[SalesController::class,'billindex'])->name('bills')->middleware('permission.checker:admin|cashier|staff');
     Route::get('bills/{HDID}',[SalesController::class,'edit'])->name('bills.edit')->middleware('permission.checker:admin|cashier');
     Route::match(['put', 'patch'], 'bills/{HDID}',[SalesController::class,'update'])->name('bills.update')->middleware('permission.checker:admin|cashier');

@@ -42,7 +42,8 @@ class OrderController extends Controller
             'DonID' => $request->input('id'),
             'customer_id' => $request->input('customer_id'),
             'SoKhach' => $request->input('sk'),
-            'TrangThai' => $request->input('tt')
+            'TrangThai' => 1
+            // 'TrangThai' => $request->input('tt')
         ]);
         $order->save();
         return redirect()->route('orders');

@@ -52,11 +52,11 @@
                                     <input type="text" class="input-form pl-2" name="sk" id="exampleInput2"
                                         placeholder="12">
                                 </div>
-                                <div class="input-group d-flex pb-2">
+                                {{-- <div class="input-group d-flex pb-2">
                                     <label for="exampleInput2" class="pr-2">Trạng thái:</label>
                                     <input type="text" class="input-form pl-2" name="tt" id="exampleInput2"
                                         placeholder="0: Hủy| 1:Chưa thanh toán">
-                                </div>
+                                </div> --}}
                                 <div class="float-right pr-1 pt-2">
                                     <button type="reset" class="btn btn-secondary">Hủy</button>
                                     <button type="submit" class="btn btn-primary">Thêm</button>

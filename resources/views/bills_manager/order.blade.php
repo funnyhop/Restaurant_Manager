@@ -44,7 +44,7 @@
                     </div>
                     <div class="row pt-5 pl-4 d-flex">
                         <div class="col-1"></div>
-                        <div class="col-10">
+                        <div class="col-11">
                             <table class="table table-bordered text-center table-hover table-info">
                                 <thead class="thead-light">
                                     <tr>
@@ -54,6 +54,7 @@
                                         <th>Ngày đặt</th>
                                         <th>Trạng thái</th>
                                         <th>Chi tiết</th>
+                                        <th>Thanh toán</th>
                                         <th>Xóa</th>
                                     </tr>
                                 </thead>
@@ -65,7 +66,12 @@
                                             <td>{{ $order->SoKhach }}</td>
                                             <td>{{ $order->created_at }}</td>
                                             <td>{{ $order->TrangThai }}</td>
-                                            <td><a href="{{ route('orders.show', ['DonID' => $order->DonID]) }}"><i class="fa-solid fa-circle-info"></i></a></td>
+                                            <td>
+                                                <a href="{{ route('orders.show', ['DonID' => $order->DonID]) }}"><i class="fa-solid fa-circle-info"></i></a>
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('create_bill', ['DonID' => $order->DonID]) }}"><i class="fa-solid fa-money-bill-1-wave"></i></a>
+                                            </td>
                                             <td>
                                             {{-- <td><a href="{{ route('orders.edit', ['DonID' => $order->DonID]) }}"><i
                                                         class="fa-solid fa-pen-to-square"></i></a></td>

@@ -65,12 +65,20 @@ class SalesController extends Controller
             'SoLuong' => $request->input('sl'),
         ]);
     }
+    public function create_bill($id){
+        $maxHDID = DB::table('bills')->max(DB::raw('CAST(SUBSTRING(HDID, 3, 3) AS SIGNED)'));
+        $newHDID = 'HD' . str_pad($maxHDID + 1, 3, '0', STR_PAD_LEFT);
+
+        $order = DB::table('orders')->select('DonID')->where('DonID', $id)->first();
+        return view('bills_manager.createbill', compact('order', 'newHDID'));
+    }
     public function createbill(Request $request){
         $bill = Bill::create([
             'HDID' => $request->input('hdid'),
             'order_id' => $request->input('order_id'),
             'staff_id' => $request->input('staff_id'),
         ]);
+        return redirect()->route('pay', $request->input('hdid'));
     }
     public function store(Request $request){
         DB::beginTransaction();
@@ -174,5 +182,12 @@ class SalesController extends Controller
                 'TrangThai' => 2,
             ]);
         return redirect()->route('bills');
+    }
+    public function bill_huy($id){
+        $order = DB::table('orders')->where('DonID', $id)
+            ->update([
+                'TrangThai' => 0,
+        ]);
+        return redirect()->route('orders');
     }
 }
