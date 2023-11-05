@@ -147,26 +147,16 @@ class SalesController extends Controller
     }
     ///update bill
     public function printbill($HDID){
-        // $bill = Bill::all()->first();
-        // $order = Order::all()->first();
-        // $customer = Customer::all()->first();
-        // $staff = Staff::all()->first();
-        // $price = DB::table('prices')->select('dish_id', 'Gia')->first();
-        // $gdh = DB::table('ghidhs')->select('dish_id', 'order_id', 'SoLuong')->first();
 
-        $info = DB::table('bills')
-            ->join('staffs', 'bills.staff_id', '=', 'staffs.NVID')
-            ->join('orders', 'bills.order_id', '=', 'orders.DonID')
-            ->join('customers', 'orders.customer_id', '=', 'customers.KHID')
-            ->join('ghidhs', 'orders.DonID', '=', 'ghidhs.order_id')
-            ->join('dishes', 'ghidhs.dish_id', '=', 'dishes.MonID')
-            ->join('prices', 'dishes.MonID', '=', 'prices.dish_id')
-            ->select('orders.DonID','bills.HDID', 'bills.created_at', 'customers.KHID', 'customers.TenKH','customers.SDT',
-                'staffs.NVID', 'staffs.TenNV', 'dishes.TenMon', 'dishes.DVT', 'ghidhs.SoLuong', 'prices.Gia', 'bills.PhuThu')
-            ->get();
+        $prices = DB::table('prices')->select('dish_id', 'Gia')->get();
+        $gdhs = DB::table('ghidhs')->select('dish_id', 'order_id', 'SoLuong')->get();
+        $dishes = DB::table('dishes')->select('MonID', 'TenMon', 'DVT')->get();
+        $staffs = Staff::all();
+        $customers = Customer::all();
+        $orders = Order::all();
         $bill = DB::table('bills')->where('HDID',$HDID)
             ->select('HDID','created_at','order_id','PhuThu','staff_id')->first();
-        return view('bills_manager.printbill', compact('info', 'bill'));
+        return view('bills_manager.printbill', compact('bill','staffs','customers','orders','gdhs','dishes','prices'));
     }
     public function billupdate(Request $request, $id){
         // dd($request, $id);

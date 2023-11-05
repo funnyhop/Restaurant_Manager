@@ -47,13 +47,28 @@
                                         </p>
                                     </div>
                                     <div >
-                                        <p class="m-0">Nhân viên: {{ $info->first()->TenNV }}</p>
+                                        <p class="m-0">Nhân viên:
+                                        @foreach ( $staffs as $staff )
+                                           {{ ($staff->NVID == $bill->staff_id) ? $staff->TenNV : '' }}
+                                        @endforeach</p>
                                     </div>
                                     <div >
-                                        <p class="m-0">Khách hàng: {{ $info->first()->TenKH }}</p>
+                                        <p class="m-0">Khách hàng:
+                                        @foreach ($orders as $order)
+                                            @foreach ( $customers as $customer )
+                                                {{($order->DonID == $bill->order_id && $customer->KHID == $order->customer_id) ? $customer->TenKH :''}}
+                                            @endforeach
+                                        @endforeach
+                                        </p>
                                     </div>
                                     <div >
-                                        <p class="m-0">ĐT: {{ $info->first()->SDT }}</p>
+                                        <p class="m-0">ĐT:
+                                        @foreach ($orders as $order)
+                                            @foreach ( $customers as $customer )
+                                                {{($order->DonID == $bill->order_id && $customer->KHID == $order->customer_id) ? $customer->SDT :''}}
+                                            @endforeach
+                                        @endforeach
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="pl-2 pr-2">
@@ -69,18 +84,25 @@
                                         </thead>
                                         <tbody>
                                             <?php $sum = 0; ?>
-                                            @foreach ($info as $value)
-                                                <tr>
-                                                    <td>{{ $value->TenMon }}</td>
-                                                    <td>{{ $value->SoLuong }}</td>
-                                                    <td>{{ $value->DVT }}</td>
-                                                    <td>{{ $value->Gia }}</td>
-                                                    <?php
-                                                    $thanhtien = $value->SoLuong * $value->Gia;
-                                                    $sum += $thanhtien;
-                                                    ?>
-                                                    <td>{{ number_format($thanhtien, 2) }}</td>
-                                                </tr>
+                                            @foreach ($gdhs as $gdh)
+                                                @foreach ($dishes as $dish)
+                                                    <tr>
+                                                        @if ($gdh->order_id == $bill->order_id && $gdh->dish_id == $dish->MonID)
+                                                            <td>{{$dish->TenMon}}</td>
+                                                            <td>{{$gdh->SoLuong}}</td>
+                                                            <td>{{$dish->DVT}}</td>
+                                                            <td>{{$prices->first()->Gia}}</td>
+                                                            <?php
+
+                                                                $thanhtien = $gdh->SoLuong * $prices->first()->Gia;
+                                                                $sum += $thanhtien;
+                                                            ?>
+                                                            <td>
+                                                                {{ number_format($thanhtien, 2) }}
+                                                            </td>
+                                                        @endif
+                                                    </tr>
+                                                @endforeach
                                             @endforeach
                                             <tr>
                                                 <td colspan="5" class="text-left">
