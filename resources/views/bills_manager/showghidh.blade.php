@@ -26,7 +26,7 @@
                 <div class="container-fluid">
                     <div class="row pt-5 pl-4 d-flex">
                         <div class="col-1"></div>
-                        <div class="col-10">
+                        <div class="col-10" style="padding-right: 85px">
                             <table class="table table-bordered text-center table-hover table-info">
                                 <thead class="thead-light">
                                     <tr>
