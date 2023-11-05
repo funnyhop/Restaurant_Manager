@@ -47,42 +47,35 @@
                                         <th>Ngày lập</th>
                                         <th>Đơn hàng</th>
                                         <th>Nhân viên</th>
-                                        <th>Phụ thu</th>
+                                        <th>Phụ thu <i>(vnđ)</i></th>
                                         <th>Trị giá <i>(vnđ)</i></th>
-                                        <th>Thanh toán</th>
-                                        <th>Sửa</th>
+                                        <th>In</th>
+                                        {{-- <th>Sửa</th> --}}
                                         <th>Xóa</th>
-                                        <th>Tên món</th>
+                                        {{-- <th>Tên món</th>
                                         <th>DVT</th>
                                         <th>Số lượng</th>
-                                        <th>Đơn giá <i>(vnđ)</i></th>
+                                        <th>Đơn giá <i>(vnđ)</i></th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($list_bill as $bill)
-                                        <?php $rowCount = 0; ?>
-
-                                        @foreach ($list_gdh as $gdh)
-                                            @if ($gdh->order_id == $bill->order_id)
-                                                <?php $rowCount++; ?>
-                                            @endif
-                                        @endforeach
                                         <tr>
-                                            <td rowspan="{{ $rowCount + 1 }}">{{ $bill->HDID }}</td>
-                                            <td rowspan="{{ $rowCount + 1 }}">{{ $bill->created_at }}</td>
-                                            <td rowspan="{{ $rowCount + 1 }}">{{ $bill->order_id }}</td>
-                                            <td rowspan="{{ $rowCount + 1 }}">{{ $bill->staff_id }}</td>
-                                            <td rowspan="{{ $rowCount + 1 }}">{{ number_format($bill->PhuThu,2)}}</td>
-                                            <td rowspan="{{ $rowCount + 1 }}">
+                                            <td>{{ $bill->HDID }}</td>
+                                            <td>{{ $bill->created_at }}</td>
+                                            <td>{{ $bill->order_id }}</td>
+                                            <td>{{ $bill->staff_id }}</td>
+                                            <td>{{ number_format($bill->PhuThu,2)}}</td>
+                                            <td>
                                                 {{ number_format($bill->TongTien, 2, '.', ',') }}
                                             </td>
-                                            <td rowspan="{{ $rowCount + 1 }}">
-                                                <a href="{{ route('pay', ['HDID' => $bill->HDID]) }}"><i class="fa-solid fa-money-bill-1-wave"></i></a>
+                                            <td>
+                                                <a href="{{ route('pay', ['HDID' => $bill->HDID]) }}"><i class="fa-solid fa-print"></i></a>
                                             </td>
-                                            <td rowspan="{{ $rowCount + 1 }}">
+                                            {{-- <td>
                                                 <a href="{{ route('bills.edit', ['HDID' => $bill->HDID]) }}"><i class="fa-solid fa-pen-to-square"></i></a>
-                                            </td>
-                                            <td rowspan="{{ $rowCount + 1 }}">
+                                            </td> --}}
+                                            <td>
                                                 <form action="{{ route('bills.delete', ['HDID' => $bill->HDID]) }}" method="post">
                                                     @csrf
                                                     @method('delete')
@@ -92,24 +85,6 @@
                                                 </form>
                                             </td>
                                         </tr>
-                                        @foreach ($list_gdh as $gdh)
-                                            @if ($gdh->order_id == $bill->order_id)
-                                                <tr>
-                                                    @foreach ($list_dish as $dish)
-                                                        @if ($gdh->dish_id == $dish->MonID)
-                                                            <td>{{ $dish->TenMon }}</td>
-                                                            <td>{{ $dish->DVT }}</td>
-                                                        @endif
-                                                    @endforeach
-                                                    <td>{{ $gdh->SoLuong }}</td>
-                                                    @foreach ($prices as $price)
-                                                        @if ($gdh->dish_id == $price->dish_id)
-                                                            <td>{{ number_format($price->Gia, 2) }}</td>
-                                                        @endif
-                                                    @endforeach
-                                                </tr>
-                                            @endif
-                                        @endforeach
                                     @endforeach
                                 </tbody>
                             </table>

@@ -66,8 +66,8 @@ class SalesController extends Controller
         ]);
     }
     public function create_bill($id){
-        $maxHDID = DB::table('bills')->max(DB::raw('CAST(SUBSTRING(HDID, 3, 3) AS SIGNED)'));
-        $newHDID = 'HD' . str_pad($maxHDID + 1, 3, '0', STR_PAD_LEFT);
+        $maxHDID = DB::table('bills')->max(DB::raw('CAST(SUBSTRING(HDID, 3, 3) AS SIGNED)'));//CAST biến chuỗi thành số để phù hợp với hàm max
+        $newHDID = 'HD' . str_pad($maxHDID + 1, 3, '0', STR_PAD_LEFT);//3, '0' STR_PAD_LEFT hiển thị bắt buộc 3 ký tự, nếu max = 1 thì sẽ chèn thêm 3 số không vào bên trái số 1
 
         $order = DB::table('orders')->select('DonID')->where('DonID', $id)->first();
         return view('bills_manager.createbill', compact('order', 'newHDID'));
@@ -77,6 +77,7 @@ class SalesController extends Controller
             'HDID' => $request->input('hdid'),
             'order_id' => $request->input('order_id'),
             'staff_id' => $request->input('staff_id'),
+            'PhuThu' => $request->input('pt'),
         ]);
         return redirect()->route('pay', $request->input('hdid'));
     }

@@ -17,7 +17,7 @@
                         <div class="col-sm-6 ">
                             <!-- SEARCH FORM -->
                             <a class="float-right mr-2" href="{{ route('bills') }}"><i
-                                    class="fa-solid fa-arrow-left-long fa-xl" style="color:#e0f8f1"></i></i></a>
+                                    class="fa-solid fa-arrow-left-long fa-xl"></i></i></a>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -106,17 +106,17 @@
                                             @endforeach
                                             <tr>
                                                 <td colspan="5" class="text-left">
-                                                    <b>Phụ thu:</b>
-                                                    <input class="phuthu" name="pt">
+                                                    <b>Phụ thu:</b> <i>{{ $bill->PhuThu }}vnđ</i>
+                                                    <input type="hidden" class="phuthu" name="pt" value="{{ $bill->PhuThu }}">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td class="text-left" colspan="5">
                                                     <b>Tổng giá:</b>
-                                                    <i>{{ number_format($sum, 2) }}vnđ <p style="font-size: 10px">(chưa có phụ thu)</p></i>
+                                                    <i>{{ number_format($sum+$bill->PhuThu, 2) }}vnđ</i>
                                                 </td>
                                             </tr>
-                                            <input type="hidden" name="sum" value="{{ $sum}}">
+                                            <input type="hidden" name="sum" value="{{$sum}}">
                                             <input type="hidden" name="tt_order" value="{{ $bill->order_id }}">
                                         </tbody>
                                     </table>

@@ -46,6 +46,10 @@
                                         <label for="exampleInput1">Nhân viên:</label>
                                         <input type="text" class="input-form" name="staff_id" value="{{ Auth::check() && Auth::user()->NVID ? Auth::user()->NVID : '' }}" id="exampleInput1" placeholder="NV001">
                                     </div>
+                                    <div class="input-group pr-3 pb-2">
+                                        <label for="exampleInput1">Phụ thu:</label>
+                                        <input type="text" class="input-form" name="pt" id="exampleInput1" placeholder="2000.00">
+                                    </div>
                                 </div>
                                 <div class="pt-1 pb-1 pr-3 float-right ">
                                     <a href="{{ route('bill_huy', ['DonID' => $order->DonID]) }}" class="btn btn-secondary">Hủy</a>
