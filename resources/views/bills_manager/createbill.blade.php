@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    <title>Bán hàng</title>
+    <title>Thêm hóa đơn</title>
 @endsection
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -11,7 +11,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h4 class="ml-3 text-dark" style="font-family: scandia-web">Bán hàng</h4>
+                            <h4 class="ml-3 text-dark" style="font-family: scandia-web">Thêm hóa đơn</h4>
                         </div>
                         <!-- /.col -->
                         <div class="col-sm-6">
@@ -27,7 +27,7 @@
                     <div class="col-11 pt-1 pl-5 mx-auto">
                         <div class="row pt-1">
                             <div class="col-4 pl-2 pr-2">
-                                <b>Ghi đơn hàng:</b>
+                                <b>Thêm hóa đơn:</b>
                             </div>
                         </div>
                         <div class="row d-flex pl-2 pr-2">
