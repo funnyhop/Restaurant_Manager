@@ -29,8 +29,10 @@ class OrderController extends Controller
      */
     public function create()
     {
+        $maxDonID = DB::table('orders')->max(DB::raw('CAST(SUBSTRING(DonID, 3, 3) AS SIGNED)'));
+        $newDonID = 'DH' . str_pad($maxDonID + 1, 3, '0', STR_PAD_LEFT);
         $list = DB::table('customers')->select('KHID', 'TenKH')->get();
-        return view('bills_manager.createorder', compact('list'));
+        return view('bills_manager.createorder', compact('list','newDonID'));
     }
 
     /**

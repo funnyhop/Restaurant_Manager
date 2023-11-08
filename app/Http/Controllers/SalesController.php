@@ -28,11 +28,14 @@ class SalesController extends Controller
         // $list_customer = $this->customer->customers();
         // $list_dish = $this->dish->dishes();
         // $list_staff = $this->staff->staffs();
+        $maxDonID = DB::table('orders')->max(DB::raw('CAST(SUBSTRING(DonID, 3, 3) AS SIGNED)'));
+        $newDonID = 'DH' . str_pad($maxDonID + 1, 3, '0', STR_PAD_LEFT);
+
         $list_order = DB::table('orders')->select('DonID')->get();
         $list_customer = DB::table('customers')->select('KHID', 'TenKH')->get();
         $list_dish = DB::table('dishes')->select('MonID', 'TenMon')->get();
         $list_staff = DB::table('staffs')->select('NVID', 'TenNV')->get();
-        return view('sales_manager.index', compact('list_order', 'list_customer', 'list_dish', 'list_staff'));
+        return view('sales_manager.index', compact('newDonID','list_order', 'list_customer', 'list_dish', 'list_staff'));
     }
 
     public function createcus(Request $request){

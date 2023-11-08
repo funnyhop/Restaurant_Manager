@@ -36,7 +36,7 @@
                                 <div class="input-group d-flex pb-2">
                                     <label for="exampleInput1" class="pr-2">Mã đơn hàng:</label>
                                     <input type="text" class="input-form pl-2" name="id" id="exampleInput1"
-                                        placeholder="DH001">
+                                    value="{{ $newDonID }}" placeholder="DH001">
                                 </div>
                                 <div class="input-group d-flex pb-2">
                                     <label for="exampleInput1" class="pr-2">Khách hàng:</label>

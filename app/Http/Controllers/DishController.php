@@ -28,6 +28,8 @@ class DishController extends Controller
      */
     public function create()
     {
+        // $maxMonID = DB::table('dishes')->max(DB::raw('CAST(SUBSTRING(MonID, 3, 3) AS SIGNED)'));
+        // $newMonID = 'MA' . str_pad($maxMonID + 1, 3, '0', STR_PAD_LEFT);
         $list = DB::table('foodgrs')->select('NhomID', 'TenNhom')->get();
         return view('restaurant_manager.createdish', compact('list'));
     }

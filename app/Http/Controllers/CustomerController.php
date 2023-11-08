@@ -27,7 +27,9 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('bills_manager.createcustomer');
+        $maxKHID = DB::table('customers')->max(DB::raw('CAST(SUBSTRING(KHID, 3, 3) AS SIGNED)'));
+        $newKHID = 'KH' . str_pad($maxKHID + 1, 3, '0', STR_PAD_LEFT);
+        return view('bills_manager.createcustomer', compact('newKHID'));
     }
 
     /**
