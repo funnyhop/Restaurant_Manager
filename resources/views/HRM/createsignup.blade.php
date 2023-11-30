@@ -36,7 +36,7 @@
                                 <div class="input-group d-flex pb-2">
                                     <label for="exampleInput1" class="pr-2">Nhân viên:</label>
                                     <select class="input-select pl-2" name="staff_id" id="exampleInput1">
-                                        <option value="{{ Auth::check() && Auth::user()->NVID ? Auth::user()->TenNV : '' }}">{{ Auth::user()->TenNV }}</option>
+                                        <option value="{{ Auth::check() && Auth::user()->NVID ? Auth::user()->NVID : '' }}">{{ Auth::user()->TenNV }}</option>
                                     </select>
                                     {{-- <select class="input-select pl-2" name="staff_id" id="exampleInput1">
                                         <option selected disabled>Chọn nhân viên</option>

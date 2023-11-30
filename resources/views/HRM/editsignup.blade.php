@@ -41,7 +41,7 @@
                                     {{-- <input type="text" class="input-form pl-2" name="staff_id" id="exampleInput1"
                                         value="{{ $signup->staff_id }}" placeholder="M0001"> --}}
                                     <select class="input-select pl-2" name="staff_id" id="exampleInput1">
-                                        <option value="{{ Auth::check() && Auth::user()->NVID ? Auth::user()->TenNV : '' }}">{{ Auth::user()->TenNV }}</option>
+                                        <option value="{{ Auth::check() && Auth::user()->NVID ? Auth::user()->NVID : '' }}">{{ Auth::user()->TenNV }}</option>
                                     </select>
                                 </div>
                                 <div class="input-group d-flex pb-2">

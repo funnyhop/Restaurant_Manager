@@ -112,16 +112,11 @@
                                         <label for="exampleInput1">Mã đơn hàng:</label>
                                         {{-- <input type="text" class="input-form" id="exampleInput1" placeholder="HD001"> --}}
                                         <select class="input-select pl-2" name="order_id" id="mat">
-                                            <option selected disabled>Chọn DH</option>
+                                            <option selected disabled value="{{ $newghiDonID }}">{{ $newghiDonID }}</option>
                                             @foreach ($list_order as $order)
                                                 <option value="{{ $order->DonID }}">{{ $order->DonID }}</option>
                                             @endforeach
                                         </select>
-                                    </div>
-                                    <div class="input-group pr-3 pb-2">
-                                        <label for="exampleInput1">Số lượng:</label>
-                                        <input type="text" class="input-form" name="sl" id="exampleInput1"
-                                            placeholder="1">
                                     </div>
                                     <div class="input-group pr-3 pb-2">
                                         <label for="mat">Món ăn:</label>
@@ -131,6 +126,11 @@
                                                 <option value="{{ $dish->MonID }}">{{ $dish->TenMon }}</option>
                                             @endforeach
                                         </select>
+                                    </div>
+                                    <div class="input-group pr-3 pb-2">
+                                        <label for="exampleInput1">Số lượng:</label>
+                                        <input type="text" class="input-form" name="sl" id="exampleInput1"
+                                            placeholder="1">
                                     </div>
                                     <div class="pt-1 mt-4 pb-1 pr-3 float-right ">
                                         <button type="submit" class="btn btn-primary">Ghi</button>

@@ -39,7 +39,7 @@
                                 <div class="input-group d-flex pb-2">
                                     <label for="exampleInput1" class="pr-2">Mã nhân viên:</label>
                                     <input type="text" class="input-form pl-2" name="staff_id" id="exampleInput1"
-                                        value="{{ $assignment->staff_id }}" placeholder="M0001">
+                                        value="{{ $assignment->staff_id }}" placeholder="NV001">
                                 </div>
                                 <div class="input-group d-flex pb-2">
                                     <label for="exampleInput1" class="pr-2">Mã ca làm:</label>
