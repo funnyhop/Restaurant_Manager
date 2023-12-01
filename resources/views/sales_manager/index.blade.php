@@ -112,7 +112,7 @@
                                         <label for="exampleInput1">Mã đơn hàng:</label>
                                         {{-- <input type="text" class="input-form" id="exampleInput1" placeholder="HD001"> --}}
                                         <select class="input-select pl-2" name="order_id" id="mat">
-                                            <option selected disabled value="{{ $newghiDonID }}">{{ $newghiDonID }}</option>
+                                            <option selected value="{{ $newghiDonID }}">{{ $newghiDonID }}</option>
                                             @foreach ($list_order as $order)
                                                 <option value="{{ $order->DonID }}">{{ $order->DonID }}</option>
                                             @endforeach
@@ -167,6 +167,72 @@
                                     <button type="submit" class="btn btn-primary">Thêm</button>
                                 </div>
                             </form> --}}
+                            <div class="col pl-0 pr-3 pt-3">
+                                <table class="table table-bordered text-center table-hover table-info">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>Mã đơn hàng</th>
+                                            <th>Mã khách hàng</th>
+                                            <th>Số khách</th>
+                                            <th>Ngày đặt</th>
+                                            <th>Trạng thái</th>
+                                            {{-- <th>Thanh toán</th> --}}
+                                            <th>Món ăn</th>
+                                            <th>Số lượng</th>
+                                            <th>Sửa</th>
+                                            <th>Xóa</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($list_order as $order)
+                                            <?php
+                                            $rowcount = 0;
+                                            $sum = 0;
+                                            ?>
+
+                                            @foreach ($ghidhs as $value)
+                                                @if ($order->DonID == $value->order_id)
+                                                    <?php $rowcount++; ?>
+                                                @endif
+                                            @endforeach
+                                            @if ($order->DonID == $newghiDonID)
+                                                <tr>
+                                                    <td rowspan="{{ $rowcount + 1 }}">{{ $order->DonID }}</td>
+                                                    <td rowspan="{{ $rowcount + 1 }}">{{ $order->customer_id }}</td>
+                                                    <td rowspan="{{ $rowcount + 1 }}">{{ $order->SoKhach }}</td>
+                                                    <td rowspan="{{ $rowcount + 1 }}">{{ $order->created_at }}</td>
+                                                    <td rowspan="{{ $rowcount + 1 }}">{{ $order->TrangThai }}</td>
+                                                    {{-- <td rowspan="{{ $rowcount + 1 }}">
+                                                        <a href="{{ route('create_bill', ['DonID' => $order->DonID]) }}"><i class="fa-solid fa-money-bill-1-wave"></i></a>
+                                                    </td> --}}
+                                                    @foreach ($ghidhs as $value)
+                                                        @foreach ($list_dish as $dish)
+                                                            @if ($order->DonID == $value->order_id && $value->dish_id == $dish->MonID)
+                                                                <tr>
+                                                                    <td>{{ $dish->TenMon }}</td>
+                                                                    <td>{{ $value->SoLuong }}</td>
+                                                                    <td><a href="{{ route('chitiet.edit', ['dish_id' => $value->dish_id, 'order_id' => $value->order_id]) }}"><i
+                                                                        class="fa-solid fa-pen-to-square"></i></a></td>
+                                                                    <td>
+                                                                        <form action="{{ route('chitiet.destroy', ['dish_id' => $value->dish_id, 'order_id' => $value->order_id]) }}"
+                                                                            method="post">
+                                                                            @csrf
+                                                                            @method('delete')
+                                                                            <button type="submit" class="btn-trash">
+                                                                                <i class="fa-solid fa-trash "></i>
+                                                                            </button>
+                                                                        </form>
+                                                                    </td>
+                                                                </tr>
+                                                            @endif
+                                                        @endforeach
+                                                    @endforeach
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <!-- /.row -->

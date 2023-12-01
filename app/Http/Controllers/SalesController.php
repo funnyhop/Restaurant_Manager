@@ -32,11 +32,16 @@ class SalesController extends Controller
         $newDonID = 'DH' . str_pad($maxDonID + 1, 3, '0', STR_PAD_LEFT);
         $newghiDonID = 'DH' . str_pad($maxDonID , 3, '0', STR_PAD_LEFT);
 
-        $list_order = DB::table('orders')->select('DonID')->get();
+        $list_order = DB::table('orders')->select('DonID', 'customer_id', 'SoKhach', 'created_at', 'TrangThai')->get();
         $list_customer = DB::table('customers')->select('KHID', 'TenKH')->get();
         $list_dish = DB::table('dishes')->select('MonID', 'TenMon')->get();
         $list_staff = DB::table('staffs')->select('NVID', 'TenNV')->get();
-        return view('sales_manager.index', compact('newghiDonID','newDonID','list_order', 'list_customer', 'list_dish', 'list_staff'));
+
+        $ghidhs = DB::table('ghidhs')
+            ->select('order_id', 'dish_id', 'SoLuong')
+            ->get();
+
+        return view('sales_manager.index', compact('ghidhs','newghiDonID','newDonID','list_order', 'list_customer', 'list_dish', 'list_staff'));
     }
 
     public function createcus(Request $request){
@@ -184,5 +189,44 @@ class SalesController extends Controller
                 'TrangThai' => 0,
         ]);
         return redirect()->route('orders');
+    }
+
+
+    public function edit_ct( $dish_id, $order_id)
+    {
+        $ghidh = DB::table('ghidhs')->select('order_id', 'dish_id')
+        ->where('dish_id', $dish_id)
+        ->where('order_id', $order_id)
+        ->select('order_id', 'dish_id','SoLuong')
+        ->first();
+        return view('sales_manager.editchitiet', compact('ghidh'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update_ct(Request $request, $dish_id, $order_id)
+    {
+        $ghidh = DB::table('ghidhs')
+            ->where('dish_id', $dish_id)
+            ->where('order_id', $order_id)
+            ->update([
+                'order_id' => $request->input('order_id'),
+                'dish_id' => $request->input('dish_id'),
+                'SoLuong' => $request->input('sl'),
+            ]);
+        return redirect()->route('sales');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy_ct($dish_id, $order_id)
+    {
+        $ghidh = DB::table('ghidhs')
+            ->where('dish_id', $dish_id)
+            ->where('order_id', $order_id);
+        $ghidh->delete();
+        return redirect()->route('sales');
     }
 }

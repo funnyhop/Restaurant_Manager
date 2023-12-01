@@ -58,7 +58,7 @@ class OrderController extends Controller
     {
         $ghidh = DB::table('ghidhs')
         ->join('dishes','ghidhs.dish_id','=','dishes.MonID')
-        ->select('order_id', 'dishes.TenMon', 'Soluong')
+        ->select('order_id', 'dishes.TenMon', 'Soluong', 'dish_id')
         ->where('order_id', $id)
         ->get();
         // dd($ghidh);
@@ -93,5 +93,43 @@ class OrderController extends Controller
         $order = DB::table('orders')->where('DonID', $id);
         $order->delete();
         return redirect()->route('orders');
+    }
+
+    public function edit_ct( $dish_id, $order_id)
+    {
+        $ghidh = DB::table('ghidhs')->select('order_id', 'dish_id')
+        ->where('dish_id', $dish_id)
+        ->where('order_id', $order_id)
+        ->select('order_id', 'dish_id','SoLuong')
+        ->first();
+        return view('sales_manager.editchitiet', compact('ghidh'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update_ct(Request $request, $dish_id, $order_id)
+    {
+        $ghidh = DB::table('ghidhs')
+            ->where('dish_id', $dish_id)
+            ->where('order_id', $order_id)
+            ->update([
+                'order_id' => $request->input('order_id'),
+                'dish_id' => $request->input('dish_id'),
+                'SoLuong' => $request->input('sl'),
+            ]);
+        return redirect()->route('sales');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy_ct($dish_id, $order_id)
+    {
+        $ghidh = DB::table('ghidhs')
+            ->where('dish_id', $dish_id)
+            ->where('order_id', $order_id);
+        $ghidh->delete();
+        return redirect()->route('sales');
     }
 }

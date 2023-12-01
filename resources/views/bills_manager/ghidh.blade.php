@@ -64,7 +64,7 @@
                                             <td><a href="{{ route('ghidhs.edit', ['dish_id' => $ghidh->dish_id, 'order_id' => $ghidh->order_id]) }}"><i
                                                         class="fa-solid fa-pen-to-square"></i></a></td>
                                             <td>
-                                                <form action="{{ route('ghidhs.edit', ['dish_id' => $ghidh->dish_id, 'order_id' => $ghidh->order_id]) }}"
+                                                <form action="{{ route('ghidhs.destroy', ['dish_id' => $ghidh->dish_id, 'order_id' => $ghidh->order_id]) }}"
                                                     method="post">
                                                     @csrf
                                                     @method('delete')

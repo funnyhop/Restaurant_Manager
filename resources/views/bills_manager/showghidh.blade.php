@@ -33,6 +33,8 @@
                                         <th>Mã đơn hàng</th>
                                         <th>Tên món ăn</th>
                                         <th>Số lượng</th>
+                                        <th>Sửa</th>
+                                        <th>Xóa</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -41,6 +43,18 @@
                                             <td>{{ $value->order_id }}</td>
                                             <td>{{ $value->TenMon }}</td>
                                             <td>{{ $value->Soluong }}</td>
+                                            <td><a href="{{ route('ct.edit', ['dish_id' => $value->dish_id, 'order_id' => $value->order_id]) }}"><i
+                                                class="fa-solid fa-pen-to-square"></i></a></td>
+                                            <td>
+                                                <form action="{{ route('ct.destroy', ['dish_id' => $value->dish_id, 'order_id' => $value->order_id]) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn-trash">
+                                                        <i class="fa-solid fa-trash "></i>
+                                                    </button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

@@ -111,6 +111,10 @@ Route::middleware(['web','auth'])->group(function () {
 
     Route::get('pay/{HDID}',[SalesController::class,'printbill'])->name('pay')->middleware('permission.checker:admin|cashier');
     Route::match(['put', 'patch'],'pay/{HDID}',[SalesController::class,'billupdate'])->name('pay.update')->middleware('permission.checker:admin|cashier');
+
+    Route::get('sales/{dish_id}/{order_id}', [SalesController::class, 'edit_ct'])->name('chitiet.edit')->middleware('permission.checker:admin|cashier|staff');
+    Route::match(['put','patch'],'sales/{dish_id}/{order_id}', [SalesController::class, 'update_ct'])->name('chitiet.update')->middleware('permission.checker:admin|cashier|staff');
+    Route::delete('sales/{dish_id}/{order_id}',[SalesController::class, 'destroy_ct'])->name('chitiet.destroy')->middleware('permission.checker:admin|cashier|staff');
 //</sales>
 //<order>
     Route::get('orders', [OrderController::class, 'index'])->name('orders')->middleware('permission.checker:admin|cashier|staff');
@@ -120,6 +124,10 @@ Route::middleware(['web','auth'])->group(function () {
     Route::get('orders/{DonID}', [OrderController::class, 'edit'])->name('orders.edit')->middleware('permission.checker:admin|cashier|staff');
     Route::match(['put','patch'],'orders/{DonID}', [OrderController::class, 'update'])->name('orders.update')->middleware('permission.checker:admin|cashier|staff');
     Route::delete('orders/{DonID}',[OrderController::class, 'destroy'])->name('orders.destroy')->middleware('permission.checker:admin|cashier|staff');
+
+    Route::get('orders/{dish_id}/{order_id}', [OrderController::class, 'edit_ct'])->name('ct.edit')->middleware('permission.checker:admin|cashier|staff');
+    Route::match(['put','patch'],'orders/{dish_id}/{order_id}', [OrderController::class, 'update_ct'])->name('ct.update')->middleware('permission.checker:admin|cashier|staff');
+    Route::delete('orders/{dish_id}/{order_id}',[OrderController::class, 'destroy_ct'])->name('ct.destroy')->middleware('permission.checker:admin|cashier|staff');
 //</order>
 //<ghidh>
     Route::get('ghidhs', [GhidhController::class, 'index'])->name('ghidhs')->middleware('permission.checker:admin|cashier|staff');
